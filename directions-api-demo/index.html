@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <style>
+    html,
+    body,
+    #map {
+        height: 100%;
+        width: 100%;
+        padding: 0px;
+        margin: 0px;
+    }
+    </style>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.0.3/leaflet.css" />
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.0.3/leaflet.js"></script>
+    <script src="https://maps.api.sygic.com/js/leaflet.sygic-1.1.0.js"></script>
+    <script src="https://code.jquery.com/jquery-2.2.4.min.js" integrity="sha256-BbhdlvQf/xTY9gja0Dq3HiwQF8LaCRTXxZKRutelT44=" crossorigin="anonymous"></script>
+</head>
+
+<body>
+    <div id="map">
+    </div>
+</body>
+<script src="Polyline.encoded.js"></script>
+<script type="text/javascript">
+
+//get apikey from URL to be used in sygic api calls
+var getApiKey = function() {
+    var search = window.location.search.substr(1).split("=");
+    if (search[0] == "key" && search[1]){
+        return search[1];
+    } else {
+        alert("You have to provide api-key in the URL https://mcsdodo.github.io/?key=YOUR_API_KEY");
+    }
+}
+var apiKey = getApiKey();
+
+var map = L.map("map");
+
+var request = {
+  "destination": "44.67646564865964,10.625152587890625", 
+  "origin": "44.65529852148082,10.880284309387207"
+};
+
+//call sygic directions api
+$.post('https://routing.api.sygic.com/v0/api/directions?key=' + apiKey, request).done(function(response){
+	if (response.routes.length > 0) {
+		var route = response.routes[0];
+
+        //create leaflet polyline object from api response
+		var polyline = L.Polyline.fromEncoded(route.route, {
+		    color: 'blue',
+		    weight: 3,
+		    smoothFactor: 1
+		});
+		var coords = polyline.getLatLngs();
+
+		var startMarker = L.marker(coords[0], { title: "Start" });
+		var endMarker = L.marker(coords[coords.length - 1], { title: "End" });
+		L.layerGroup([polyline, startMarker, endMarker]).addTo(map);
+
+		var bounds = new L.LatLngBounds(coords);
+		map.fitBounds(bounds);
+	} else {
+        alert("NO_RESULTS");
+    }
+});
+
+var sygicTileLayer = L.TileLayer.sygic(apiKey);
+L.layerGroup([sygicTileLayer]).addTo(map);
+
+</script>
+
+</html>
