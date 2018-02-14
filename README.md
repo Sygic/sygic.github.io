@@ -8,6 +8,8 @@ To see demo of sygic maps analytics API use <https://mcsdodo.github.io/analytics
 
 To see demo of sygic maps directions API use <https://mcsdodo.github.io/directions-api-demo/?key=> (code available here: <https://github.com/mcsdodo/mcsdodo.github.io/tree/master/directions-api-demo>)
 
+To see interactive analytics API demo use <https://mcsdodo.github.io/analytics-live-demo?key=> (code available here: <https://github.com/mcsdodo/mcsdodo.github.io/tree/master/analytics-live-demo>)
+
 #### About google encoded polyline:
 The 'route' part of sygic APIs' responses is intended to be used as-is. Some 3rd party libraries might consider strings used as escaped strings. Therefore it might occur that they try to unescape them. In examples below you can see how an original route and 'unescaped' one looks like (notice missing double back-slash in the latter one). [This example](https://mcsdodo.github.io/unescaped-polyline-demo/?key=) (code available here: <https://github.com/mcsdodo/mcsdodo.github.io/tree/master/unescaped-polyline-demo>) illustrates how different the polyline visualizatin might look like (see image below - the unescaped/incorrect polyline is in red).
 
