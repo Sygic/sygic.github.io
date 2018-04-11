@@ -1,6 +1,6 @@
 # Sygic analytics api's map matching live demo
 
-To view live example please navigate to https://mcsdodo.github.io/analytics-live-demo?key= [YOUR_API_KEY]
+To view live example please navigate to https://sygic.github.io/analytics-live-demo?key= [YOUR_API_KEY]
 
 ## Controls
 
