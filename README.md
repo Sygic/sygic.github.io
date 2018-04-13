@@ -12,12 +12,14 @@ To see interactive analytics API demo use <https://sygic.github.io/analytics-liv
 
 To see demo of sygic maps route matchin API use <https://sygic.github.io/route-matching-demo/?key=> (code available here: <https://github.com/sygic/sygic.github.io/tree/master/route-matching-demo>)
 
+To see demo of simple optimization & routing visualization use-case visit <https://sygic.github.io/simple-optimization-demo/?key=> (code available here: <https://github.com/sygic/sygic.github.io/tree/master/simple-optimization-demo>)
+
 #### About google encoded polyline:
-TL;DR – google encoded polyline is not to be considered a string. If you want to copy-paste from API response directly to your code, make sure that you escape ‘\’ characters.
+TL;DR – google encoded polyline is not to be considered a string. If you want to copy-paste programmatically computed polyline to your code, make sure that you escape ‘\’ characters.
 
 *Make sure to always escape the backslashes in encoded strings!* Not doing so will result in the backslash to be interpreted as an escape character, yielding either **wrong** polyline or a polyline **that can't be decoded**. This problem will not occur if the polylines are passed around programatically in memory. 
 
-Polyline below is encoded from two coordinates "41.6076,-88.21549","41.60745,-88.21537":
+Polyline below is encoded from two coordinates "41.6076,-88.21549","41.60745,-88.21537" (as result of calling javascript used in examples like `L.PolylineUtil.encode([[41.6076, -88.21549], [41.60745,-88.21537]])` ):
 ```
 on}|FxqlyO\W
 ```
