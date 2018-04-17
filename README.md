@@ -14,6 +14,8 @@ To see demo of sygic maps route matchin API use <https://sygic.github.io/route-m
 
 To see demo of simple optimization & routing visualization use-case visit <https://sygic.github.io/simple-optimization-demo/?key=> (code available here: <https://github.com/sygic/sygic.github.io/tree/master/simple-optimization-demo>)
 
+To see demo of simple integration of Sygic Map layers visit <https://sygic.github.io/maps-layers-demo/?key=> (code available here: <https://github.com/sygic/sygic.github.io/tree/master/maps-layers-demo>)
+
 #### About google encoded polyline:
 TL;DR – google encoded polyline is not to be considered a string. If you want to copy-paste programmatically computed polyline to your code, make sure that you escape ‘\’ characters.
 
