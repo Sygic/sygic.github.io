@@ -4,215 +4,21 @@
 <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="styles.css" />
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.0.3/leaflet.css" />
-
     <script src="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.0.3/leaflet.js"></script>
     <script src="https://maps.api.sygic.com/js/sygic/1.3.0/leaflet.sygic.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/lockr/0.8.4/lockr.min.js"></script>
     <script src="https://code.jquery.com/jquery-3.2.1.min.js" integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4=" crossorigin="anonymous"></script>
     <script src="https://cdn.rawgit.com/Sygic/sygic.github.io/master/libs/Polyline.encoded.js"></script>
     <script src="https://cdn.rawgit.com/Sygic/sygic.github.io/master/libs/numbered-icon.js"></script>
-    <script src="examples.js"></script>
+    <link rel="stylesheet" href="styles.css" />
+    <script src="https://cdn.rawgit.com/Sygic/sygic.github.io/master/api-key.js"></script>
+    <script src="script.js"></script>
 </head>
 
 <body>
     <div id="map">
     </div>
 </body>
-
-<script type="text/javascript">
-    Lockr.prefix = "sygic";
-
-    //get apikey from URL to be used in sygic api calls
-    var getApiKey = function () {
-        var search = window.location.search.substr(1).split("=");
-        if (search[0] == "key" && search[1]) {
-            return search[1];
-        } else {
-            alert("You have to provide api-key in the URL ?key=YOUR_API_KEY");
-        }
-    }
-
-    var apiKey = getApiKey();
-
-    //initialization of sygic maps
-    var map = L.map("map");
-
-    
-    var sygicTileLayer = L.TileLayer.sygic(apiKey);
-    L.layerGroup([sygicTileLayer]).addTo(map);
-
-    var markers = L.layerGroup();
-    var matchedRouteLayer = L.layerGroup();
-    map.addLayer(markers);
-    map.addLayer(matchedRouteLayer);
-
-
-    function init(coordinatesOverride) {
-        markers.clearLayers();
-        let coordinates = coordinatesOverride || Lockr.get('coords');
-        console.info("Stored coordinates: ", coordinates);
-        if (coordinates) {
-            var bounds = new L.LatLngBounds();
-            coordinates.forEach(function (coordinate, index) {
-                var latlng = coordsFromString(coordinate);
-                addMarker(latlng, true, index + 1);
-                bounds.extend(latlng);
-            })
-            map.fitBounds(bounds);
-        } else {
-            map.setView([48.146864, 17.105868], 14);
-        }
-    }
-    init();
-
-    L.control.layers(null, { "Markers": markers }, { collapsed: false }).addTo(map);
-
-    (function(){
-        let dropdown = L.Control.extend({
-            options: {
-                position: 'topright'
-            },
-            onAdd: function (map) {
-                var container = L.DomUtil.create('select');
-                var innerHTML = "<option value=''>--</option>";
-                $.each(examples, function(key, value){
-                    let option = '<option value=' + key + '>' + key + '</option>';
-                    innerHTML += option;
-                });
-                
-                container.innerHTML = innerHTML;
-                L.DomEvent.disableClickPropagation(container);
-                container.onchange = function(a,b,c) {
-                    if (this.value){
-                        init(examples[this.value].coordinates);
-                    } else {
-                        init();
-                    }
-                    console.log(this.value);
-                }
-                return container;
-            },
-        });
-        map.addControl(new dropdown());
-    })();
-
-    function addButton(value, callback) {
-        let button = L.Control.extend({
-            options: {
-                position: 'topright'
-            },
-            onAdd: function (map) {
-                var container = L.DomUtil.create('input');
-                L.DomEvent.disableClickPropagation(container);
-                container.type = "button";
-                container.value = value;
-
-                container.onclick = callback
-                return container;
-            },
-        });
-        map.addControl(new button());
-    }
-    addButton("Clear all", function (evt) {
-        markers.clearLayers();
-        matchedRouteLayer.clearLayers();
-        Lockr.flush();
-    });
-    addButton("Compute", function () {
-        let tmpMarkers = [];
-        let markersLayers = markers._layers;
-        for (let name in markersLayers) {
-            if (markersLayers.hasOwnProperty(name)) {
-                let marker = markersLayers[name];
-                let latlng = marker._latlng.lat + "," + marker._latlng.lng;
-                tmpMarkers.push(latlng);
-            }
-        }
-        matchedRouteLayer.clearLayers();
-        if (tmpMarkers && tmpMarkers.length > 1) {
-            compute(tmpMarkers);
-        } else {
-            alert("Add some markers to the map!")
-        }
-
-    });
-
-    function coordsToString(latlng) {
-        return latlng.lat.toFixed(5) + "," + latlng.lng.toFixed(5);
-    }
-
-    function coordsFromString(latlngStr) {
-        let split = latlngStr.split(',');
-        return { lat: Number.parseFloat(split[0]), lng: Number.parseFloat(split[1]) };
-    }
-
-    function addMarker(coords, skipStorage, forceIndex) {
-        let storedCoords = Lockr.get("coords");
-        let index = storedCoords && (storedCoords.length + 1) || 1;
-        let marker = L.marker(coords, {
-            icon: new L.NumberedDivIcon({ number: forceIndex || index }),
-            draggable: true,
-            originalCoordinates: coords
-        });
-
-        marker.on('contextmenu', function () {
-            Lockr.srem("coords", coordsToString(marker._latlng));
-            init();
-        });
-
-        marker.on('dragend', function(evt) {
-            //replace coordinate in storage
-            let storedCoords = Lockr.get("coords");
-            let originalCoords = coordsToString(evt.target.options.originalCoordinates);
-            let originalIndex = storedCoords.indexOf(originalCoords);
-            let newCoords = coordsToString(evt.target.getLatLng());
-            storedCoords[originalIndex] = newCoords;
-            Lockr.set("coords", storedCoords);
-            init();
-        });
-
-        marker.addTo(markers);
-        if (skipStorage) return;
-        Lockr.sadd("coords", coordsToString(marker._latlng));
-    }
-
-    map.on('click',
-        function (evt) {
-            addMarker(evt.latlng);
-        });
-
-    var colors = [
-        "#009fff", // blue for no speeding (0%)
-        "#fdff00", // yellow for 10% speeding
-        "#ff7400", // orange for 20% speeding
-        "#f00", // red for 30% speeding
-        "#000" // black for more
-    ];
-
-    function createPolyline(line, color) {
-        let polyline = L.Polyline.fromEncoded(line, {
-            color: color,
-            weight: 5,
-            smoothFactor: 1
-        });
-        return polyline;
-    }
-
-    function compute(coordinates) {
-        $.post("https://analytics.api.sygic.com/v0/api/speeding?key=" + apiKey, {
-            coordinates: coordinates
-        }).done(function (response) {
-            let matchedRoute = createPolyline(response.route, "#bababa");
-
-            matchedRoute.addTo(matchedRouteLayer);
-
-            let bounds = matchedRoute.getBounds();
-            map.fitBounds(bounds);
-        });
-    }
-
-</script>
 
 </html>

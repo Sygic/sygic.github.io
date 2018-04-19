@@ -1,0 +1,26 @@
+{
+  "name": "sygic-maps-github-demos",
+  "version": "1.0.0",
+  "description": "Full documentation available here: <http://www.sygic.com/developers/maps-api-services/introduction>. You can get your api key to be used in this examples here: <http://www.sygic.com/business/contact-sales>",
+  "main": "gulpfile.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/sygic/sygic.github.io.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/sygic/sygic.github.io/issues"
+  },
+  "homepage": "https://github.com/sygic/sygic.github.io#readme",
+  "devDependencies": {
+    "gulp": "^3.9.1",
+    "gulp-change": "^1.0.0",
+    "gulp-clean": "^0.4.0",
+    "gulp-print": "^5.0.0",
+    "gulp-rename": "^1.2.2"
+  }
+}

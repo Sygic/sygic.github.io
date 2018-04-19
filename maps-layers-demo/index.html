@@ -4,68 +4,17 @@
 <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <style>
-        html,
-        body,
-        #map {
-            height: 100%;
-            width: 100%;
-            padding: 0px;
-            margin: 0px;
-        }
-    </style>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.0.3/leaflet.css" />
     <link rel="stylesheet" href="https://maps.api.sygic.com/js/sygic/1.3.0/leaflet.sygic.css">
     <script src="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.0.3/leaflet.js"></script>
     <script src="https://maps.api.sygic.com/js/sygic/1.3.0/leaflet.sygic.js"></script>
+    <link rel="stylesheet" href="styles.css" />
+    <script src="https://cdn.rawgit.com/Sygic/sygic.github.io/master/api-key.js"></script>
+    <script src="script.js"></script>
 </head>
 
 <body>
     <div id="map">
     </div>
 </body>
-<script type="text/javascript">
-
-    //get apikey from URL to be used in sygic api calls
-    var getApiKey = function () {
-        var search = window.location.search.substr(1).split("=");
-        if (search[0] == "key" && search[1]) {
-            return search[1];
-        } else {
-            alert("You have to provide api-key in the URL https://sygic.github.io/?key=YOUR_API_KEY");
-        }
-    }
-    var apiKey = getApiKey();
-
-    var map = L.map("map", {
-        center: [51.500434, -0.12634],
-        zoom: 15
-    });
-
-
-    var mapLayerUser = L.TileLayer.sygic(apiKey, { detectRetina: false });
-    var sateliteLayer = L.TileLayer.sygicSatellite(apiKey, { detectRetina: false });
-    var poiLayer = L.TileLayer.sygicPoi(apiKey);
-    var restrictionLayer = L.TileLayer.sygicRestriction(apiKey);
-    var incidentLayer = L.TileLayer.sygicIncident(apiKey);
-
-    var trafficLayer = new L.TileLayer.sygicTraffic(apiKey, {
-        trafficControl: true
-    });
-
-    var baseMaps = { 'Map': mapLayerUser, 'Satelite': sateliteLayer };
-
-    var overlayMaps = {
-        'Poi': poiLayer,
-        'Restriction': restrictionLayer,
-        'Traffic': trafficLayer,
-        'Incident': incidentLayer
-    };
-
-    L.layerGroup([mapLayerUser, poiLayer, restrictionLayer, incidentLayer, trafficLayer]).addTo(map);
-
-    L.control.layers(baseMaps, overlayMaps, { collapsed: false }).addTo(map);
-
-</script>
-
 </html>
