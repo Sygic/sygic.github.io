@@ -1,11 +1,11 @@
 *.orig
 node_modules/
 package-lock.json
-/analytics-api-demo/package.json
-/analytics-live-demo/package.json
-/directions-api-demo/package.json
+/analytics-speeding-demo/package.json
+/analytics-route-matching-live-demo/package.json
+/directions-demo/package.json
 /maps-layers-demo/package.json
-/route-matching-demo/package.json
+/analytics-route-matching-demo/package.json
 /simple-optimization-demo/package.json
 /simple-polyline-demo/package.json
 /unescaped-polyline-demo/package.json

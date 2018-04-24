@@ -20,7 +20,7 @@ window.onload = function () {
         return polyline;
     }
 
-    $.post("https://directions.api.sygic.com/v0/api/matching?key=" + apiKey, exampleInput).done(function (response) {
+    $.post("https://directions.api.sygic.com/v1/api/matching?key=" + apiKey, exampleInput).done(function (response) {
         var matchedRoute = createPolyline(response.route, "blue");
 
         map.addLayer(matchedRoute);

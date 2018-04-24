@@ -1,7 +1,7 @@
 # Sygic speed analytics demo
 
 Simplistic demo web to demostrate new speeding analytics API of Sygic.
-To view live example please navigate to https://sygic.github.io/analytics-api-demo?key= [YOUR_API_KEY]
+To view live example please navigate to https://sygic.github.io/analytics-speeding-demo?key= [YOUR_API_KEY]
 
 ## Api call
 

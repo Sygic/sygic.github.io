@@ -4,13 +4,13 @@ Full documentation available here: <http://www.sygic.com/developers/maps-api-ser
 
 To see demo of simple integration of google encoded polyline on Sygic maps use <https://sygic.github.io/simple-polyline-demo/?key=> (code available here: <https://github.com/sygic/sygic.github.io/tree/master/simple-polyline-demo>)
 
-To see demo of sygic maps analytics API use <https://sygic.github.io/analytics-api-demo/?key=> (code available here: <https://github.com/sygic/sygic.github.io/tree/master/analytics-api-demo>)
+To see demo of sygic maps analytics API use <https://sygic.github.io/analytics-speeding-demo/?key=> (code available here: <https://github.com/sygic/sygic.github.io/tree/master/analytics-speeding-demo>)
 
-To see demo of sygic maps directions API use <https://sygic.github.io/directions-api-demo/?key=> (code available here: <https://github.com/sygic/sygic.github.io/tree/master/directions-api-demo>)
+To see demo of sygic maps directions API use <https://sygic.github.io/directions-demo/?key=> (code available here: <https://github.com/sygic/sygic.github.io/tree/master/directions-demo>)
 
-To see interactive analytics API demo use <https://sygic.github.io/analytics-live-demo?key=> (code available here: <https://github.com/sygic/sygic.github.io/tree/master/analytics-live-demo>)
+To see interactive analytics API demo use <https://sygic.github.io/analytics-route-matching-live-demo?key=> (code available here: <https://github.com/sygic/sygic.github.io/tree/master/analytics-route-matching-live-demo>)
 
-To see demo of sygic maps route matchin API use <https://sygic.github.io/route-matching-demo/?key=> (code available here: <https://github.com/sygic/sygic.github.io/tree/master/route-matching-demo>)
+To see demo of sygic maps route matchin API use <https://sygic.github.io/analytics-route-matching-demo/?key=> (code available here: <https://github.com/sygic/sygic.github.io/tree/master/analytics-route-matching-demo>)
 
 To see demo of simple optimization & routing visualization use-case visit <https://sygic.github.io/simple-optimization-demo/?key=> (code available here: <https://github.com/sygic/sygic.github.io/tree/master/simple-optimization-demo>)
 
