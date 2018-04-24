@@ -1,0 +1,18 @@
+html,
+body,
+#map {
+    height: 100%;
+    width: 100%;
+    padding: 0px;
+    margin: 0px;
+}
+
+.leaflet-marker-icon .number {
+    position: relative;
+    top: -5px;
+    font-size: 12px;
+    width: 85px;
+    font-weight: bold; 
+    text-align: center;
+    color: black;
+}
