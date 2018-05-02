@@ -4,6 +4,8 @@ Full documentation available here: <http://www.sygic.com/developers/maps-api-ser
 
 To see demo of simple integration of google encoded polyline on Sygic maps use <https://sygic.github.io/simple-polyline-demo/?key=> ([code available here](https://github.com/sygic/sygic.github.io/tree/master/simple-polyline-demo) and [jsfiddle to play with here](http://jsfiddle.net/gh/get/library/pure/Sygic/sygic.github.io/tree/master/documentation-demos/simple-polyline-demo))
 
+To see demo of integration of multiple google encoded polylines on Sygic maps use <https://sygic.github.io/multiple-polyline-demo/?key=> ([code available here](https://github.com/sygic/sygic.github.io/tree/master/multiple-polyline-demo) and [jsfiddle to play with here](http://jsfiddle.net/gh/get/library/pure/Sygic/sygic.github.io/tree/master/documentation-demos/multiple-polyline-demo))
+
 To see demo of sygic maps analytics API use <https://sygic.github.io/analytics-speeding-demo/?key=> ([code available here](https://github.com/sygic/sygic.github.io/tree/master/analytics-speeding-demo) and [jsfiddle to play with here](http://jsfiddle.net/gh/get/library/pure/Sygic/sygic.github.io/tree/master/documentation-demos/analytics-speeding-demo))
 
 To see demo of sygic maps directions API use <https://sygic.github.io/directions-demo/?key=> ([code available here](https://github.com/sygic/sygic.github.io/tree/master/directions-demo) and [jsfiddle to play with here](http://jsfiddle.net/gh/get/library/pure/Sygic/sygic.github.io/tree/master/documentation-demos/directions-demo))
