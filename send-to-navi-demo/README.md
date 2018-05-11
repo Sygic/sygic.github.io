@@ -1,6 +1,8 @@
 # Sygic send route to navigation demo
 
-This demo illustrates an integration of Sygic Send route to navigation. 
+This demo illustrates an integration of Sygic Send route to Truck navigation. 
+After click on the <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAMAAAC6V+0/AAABCFBMVEUAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAzxr8JAAAAV3RSTlMAAQIEBQYHCAkLDA4RExQWFxgaGxwgIiUmKy4vNDg8PT5BQkNETE1OUlZcXV9rbW9wd3x+gIKDhYmLkaWmq62vsLnBw8XHyNHT1drc4OLm6PHz9ff5+/2myfM7AAAA0UlEQVQYGWXBiTYCYQCG4Xfyl4xsY5Ate/zITgrZRRJjme/+78TMmTNEz0Ovfnr4dx3+ydfVvuCPzNbX2eDxDt3mXh6LcF/i18h1sOaAI49UrqoDAwVcZUk4Gx9XQ9BXN0wFJKZbz7OA116CcoNYofFpHcDqFjjZBcy+TnOAOZfGgIcF4EmHDjDRkY4AR+PAQCV43XS3Jb0ZwFWWWGb+RrEVIsWAVEXSe57I+iUpq0hY86G6R8pK4aRfC5urzUVSVpoBTLklj5TVMolhfoyW6PYN7AQfzqKVSNwAAAAASUVORK5CYII="/> button (located under zoom controls), same route as shown on the map is send into navigation.
+Currently supported OS is Android only.
 For more details please visit our documentation at https://www.sygic.com/developers/maps-api-services/routing-api/send-route-to-navigation
 To view live example please navigate to https://sygic.github.io/send-to-navi-demo?key= [YOUR_API_KEY]
 

@@ -29,12 +29,12 @@ window.onload = function () {
 }
 
 function run() {
-    var apiKey = prompt("Please enter ApiKey");
+    var apiKey = prompt("Please enter ApiKey for Send route to navigation API");
 
     if (apiKey) {
         var sendToNaviUrl = "https://directions.api.sygic.com/v0/api/sendtonavi?key=" + apiKey;
 
-        var tag = prompt("Please enter tag for example");
+        var tag = prompt("Please enter login or IMEI of the device in format \"login_YourLogin@email.com\" or \"id_IMEIOfDevice\"");
         if (tag) {
 
             var sendToNaviApiInput = {
