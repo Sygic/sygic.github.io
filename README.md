@@ -10,6 +10,8 @@ To see demo of sygic maps analytics API use <https://sygic.github.io/analytics-s
 
 To see demo of sygic maps directions API use <https://sygic.github.io/directions-demo/?key=> ([code available here](https://github.com/sygic/sygic.github.io/tree/master/directions-demo) and [jsfiddle to play with here](http://jsfiddle.net/gh/get/library/pure/Sygic/sygic.github.io/tree/master/documentation-demos/directions-demo))
 
+To see demo of sygic maps toll cost API use <https://sygic.github.io/toll-cost-demo/?key=> ([code available here](https://github.com/sygic/sygic.github.io/tree/master/toll-cost-demo) and [jsfiddle to play with here](http://jsfiddle.net/gh/get/library/pure/Sygic/sygic.github.io/tree/master/documentation-demos/toll-cost-demo))
+
 To see interactive analytics API demo use <https://sygic.github.io/analytics-route-matching-live-demo?key=> ([code available here](https://github.com/sygic/sygic.github.io/tree/master/analytics-route-matching-live-demo) and [jsfiddle to play with here](http://jsfiddle.net/gh/get/library/pure/Sygic/sygic.github.io/tree/master/documentation-demos/analytics-route-matching-live-demo))
 
 To see demo of sygic maps route matchin API use <https://sygic.github.io/analytics-route-matching-demo/?key=> ([code available here](https://github.com/sygic/sygic.github.io/tree/master/analytics-route-matching-demo) and [jsfiddle to play with here](http://jsfiddle.net/gh/get/library/pure/Sygic/sygic.github.io/tree/master/documentation-demos/analytics-route-matching-demo))
