@@ -1,8 +1,8 @@
 window.onload = function () {
     var apiKey = prompt("Please ender an API key valid for Here maps.");
 
-    if (apiKey == null) {
-        return;
+    if (apiKey == null || apiKey == "") {
+        location.reload();
     }
 
     var map = L.map("map");
