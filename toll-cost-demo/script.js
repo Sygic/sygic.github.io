@@ -3,6 +3,11 @@ window.onload = function () {
 
     var map = L.map("map");
 
+    var colorPallet = [
+        "#ed1b2f", "#51A351", "#EE8B1A", "#F5B72F", "#1EA1DA", "#4E2960", "#891887", "#BB4A99",
+        "#005E2B", "#9C262A", "#5EA72D", "#211E1F", "#99bcc6", "#e8e533", "#FFFFFF"
+    ];
+
     var request = { 
         "origin": "44.65529852148082,10.880284309387207", 
         "destination": "44.736978954208844,10.610046386718752", 
@@ -43,7 +48,7 @@ window.onload = function () {
                         var encode = L.Polyline.fromEncoded(segment.geometry);
                         if(encode && encode._latlngs){
                             var polylineStyle = {
-                                color: '#' + ((1 << 24) * Math.random() | 0).toString(16),
+                                color: colorPallet[i % colorPallet.length],
                                 weight: 5,
                                 smoothFactor: 1,
                                 offset: -12
@@ -82,12 +87,3 @@ window.onload = function () {
     var sygicTileLayer = L.TileLayer.sygic(apiKey);
     L.layerGroup([sygicTileLayer]).addTo(map);
 }
-
-function getRandomColor() {
-    var letters = '0123456789ABCDEF';
-    var color = '#';
-    for (var i = 0; i < 6; i++) {
-      color += letters[Math.floor(Math.random() * 16)];
-    }
-    return color;
-  }
