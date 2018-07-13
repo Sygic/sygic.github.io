@@ -3,6 +3,9 @@ window.onload = function () {
 
     var map = L.map("map");
 
+    var sygicTileLayer = L.TileLayer.sygic(apiKey);
+    L.layerGroup([sygicTileLayer]).addTo(map);
+    
     var request = {
         "destination": "44.67646564865964,10.625152587890625",
         "origin": "44.65529852148082,10.880284309387207"
@@ -31,7 +34,4 @@ window.onload = function () {
             alert("NO_RESULTS");
         }
     });
-
-    var sygicTileLayer = L.TileLayer.sygic(apiKey);
-    L.layerGroup([sygicTileLayer]).addTo(map);
 }

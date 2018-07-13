@@ -7,6 +7,9 @@ window.onload = function () {
 
     var map = L.map("map");
 
+    var sygicTileLayer = L.TileLayer.sygic(apiKey);
+    L.layerGroup([sygicTileLayer]).addTo(map);
+
     var colorPallet = [
         "#ed1b2f", "#51A351", "#EE8B1A", "#F5B72F", "#1EA1DA", "#4E2960", "#891887", "#BB4A99",
         "#005E2B", "#9C262A", "#5EA72D", "#211E1F", "#99bcc6", "#e8e533", "#FFFFFF"
@@ -87,7 +90,4 @@ window.onload = function () {
             alert("NO_RESULTS");
         }
     });
-
-    var sygicTileLayer = L.TileLayer.sygic(apiKey);
-    L.layerGroup([sygicTileLayer]).addTo(map);
 }
