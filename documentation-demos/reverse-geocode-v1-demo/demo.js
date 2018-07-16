@@ -1,10 +1,13 @@
+var apiKey = getApiKey();
+var map;
+var markersGroup;
+
 window.onload = function () {
-    var apiKey = getApiKey();
 
     var lat = 48.224158;
     var lon = 16.988369;
 
-    var map = L.map("map", {
+    map = L.map("map", {
         center: [lat, lon],
         zoom: 15
     });
@@ -12,10 +15,20 @@ window.onload = function () {
     var sygicTileLayer = L.TileLayer.sygic(apiKey);
     L.layerGroup([sygicTileLayer]).addTo(map);
 
+    var contextMenu = L.popup();
+
+    map.on('contextmenu',(e) => {
+        contextMenu.setContent('<button onclick="whatIsHere(' + e.latlng.lat + ',' + e.latlng.lng + ')">What\'s here?</button>').setLatLng(e.latlng).openOn(map);
+    });
+
+    whatIsHere(lat,lon);
+}
+
+function whatIsHere (lat, lon) {
     var markers = [];
-    var originalLocationMarker = L.marker([lat, lon]);
-    originalLocationMarker.bindPopup('Requested location - ' + lat + ',' + lon, {autoClose: false});
-    markers.push(originalLocationMarker);
+
+    if (markersGroup != null)
+        map.removeLayer(markersGroup);
 
     $.get('https://geocoding.api.sygic.com/v1/api/reversegeocode?location=' + lat + ',' + lon + '&key=' + apiKey).done(function (response) {
         if (response.results.length > 0) {
@@ -38,7 +51,14 @@ window.onload = function () {
             results.forEach(function(element){
                 var locationLat = element.location.lat;
                 var locationLon = element.location.lon;
-                var formattedResult = element.formatted_result;
+
+                // location type can be:
+                //                 // for address result type: "exact" or "interpolated"
+                //                 // for road result type: "closest point"
+                //                 // for locality result type: "centroid"
+                var locationType = humanize(element.location_type);
+
+                var formattedResult = locationType + ":<br>" + element.formatted_result;
                 var locationMarker;
 
                 if(element.type === "road"){
@@ -52,18 +72,26 @@ window.onload = function () {
                 markers.push(locationMarker);
             });
 
-            var group = L.featureGroup(markers).addTo(map);
+            markersGroup = L.featureGroup(markers).addTo(map);
 
-            var bounds = group.getBounds();
+            var bounds = markersGroup.getBounds();
             map.fitBounds(bounds);
 
-            group.eachLayer(function (layer) {
+            markersGroup.eachLayer(function (layer) {
                 layer.openPopup();
             });
         } else {
             alert("NO_RESULTS");
         }
     });
+}
+
+function humanize(str) {
+    var frags = str.split('_');
+    for (i=0; i<frags.length; i++) {
+        frags[i] = frags[i].charAt(0).toUpperCase() + frags[i].slice(1);
+    }
+    return frags.join(" ");
 }
 
 function createDonutMarker(lat, lon, description) {
