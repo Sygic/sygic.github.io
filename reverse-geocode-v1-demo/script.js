@@ -4,8 +4,8 @@ var popup;
 
 window.onload = function () {
 
-    var lat = 48.224158;
-    var lon = 16.988369;
+    var lat = 51.50105925961465;
+    var lon = -0.12856364250183108;
 
     map = L.map("map", {
         center: [lat, lon],
