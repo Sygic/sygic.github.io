@@ -13,7 +13,6 @@ window.onload = function () {
     //initialization of sygic maps
     var map = L.map("map");
 
-
     var sygicTileLayer = L.TileLayer.sygic(apiKey);
     L.layerGroup([sygicTileLayer]).addTo(map);
 

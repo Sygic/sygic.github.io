@@ -22,6 +22,8 @@ To see demo of simple integration of Sygic Map layers visit <https://sygic.githu
 
 To see demo of send route to navigation visit <https://sygic.github.io/send-to-navi-demo/?key=> ([code available here](https://github.com/sygic/sygic.github.io/tree/master/send-to-navi-demo) and [jsfiddle to play with here](http://jsfiddle.net/gh/get/library/pure/Sygic/sygic.github.io/tree/master/documentation-demos/send-to-navi-demo))
 
+To see demo of reverse geocode v1 visit <https://sygic.github.io/reverse-geocode-v1-demo?key=> ([code available here](https://github.com/sygic/sygic.github.io/tree/master/reverse-geocode-v1-demo) and [jsfiddle to play with here](http://jsfiddle.net/gh/get/library/pure/Sygic/sygic.github.io/tree/master/documentation-demos/reverse-geocode-v1-demo))
+
 #### About google encoded polyline:
 TL;DR – google encoded polyline is not to be considered a string. If you want to copy-paste programmatically computed polyline to your code, make sure that you escape ‘\’ characters.
 
