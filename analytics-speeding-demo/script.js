@@ -30,8 +30,13 @@ window.onload = function () {
         return polyline;
     }
 
-
-    $.post("https://analytics.api.sygic.com/v0/api/speeding?key=" + apiKey, exampleInput).done(function (response) {
+    $.ajax({
+        url: "https://analytics.api.sygic.com/v0/api/speeding?key=" + apiKey,
+        method: "POST",
+        dataType: "json",
+        contentType: "application/json; charset=UTF-8",
+        data: JSON.stringify(exampleInput)
+    }).done(function (response){
         var matchedRoute = createPolyline(response.route, "#bababa");
 
         var lines = [matchedRoute];
