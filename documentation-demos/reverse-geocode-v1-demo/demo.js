@@ -2,7 +2,7 @@ window.onload = function () {
     var apiKey = prompt("Please ender an API key valid for TomTom maps.");
 
     if (apiKey == null || apiKey == "") {
-        location.reload();
+        return location.reload();
     }
 
     var map;
