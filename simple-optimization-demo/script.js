@@ -195,7 +195,7 @@ window.onload = function () {
         }
 
         function createMarker(coordinates, color, index) {
-            var icon = new L.NumberedDivIcon({ number: index, iconUrl: 'https://cdn.rawgit.com/pointhi/leaflet-color-markers/master/img/marker-icon-' + color + '.png', });
+            var icon = new L.NumberedDivIcon({ number: index, iconUrl: 'https://gitcdn.xyz/cdn/pointhi/leaflet-color-markers/master/img/marker-icon-' + color + '.png', });
             var marker = new L.marker(coordinates, {
                 icon: icon
             });

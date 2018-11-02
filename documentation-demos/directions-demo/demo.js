@@ -5,14 +5,20 @@ window.onload = function () {
 
     var sygicTileLayer = L.TileLayer.sygic(apiKey);
     L.layerGroup([sygicTileLayer]).addTo(map);
-    
+
     var request = {
         "destination": "44.67646564865964,10.625152587890625",
         "origin": "44.65529852148082,10.880284309387207"
     };
 
     //call sygic directions api
-    $.post('https://routing.api.sygic.com/v0/api/directions?key=' + apiKey, request).done(function (response) {
+    $.ajax({
+        url: "https://routing.api.sygic.com/v0/api/directions?key=" + apiKey,
+        method: "POST",
+        dataType: "json",
+        contentType: "application/json; charset=UTF-8",
+        data: JSON.stringify(request)
+    }).done(function (response) {
         if (response.routes.length > 0) {
             var route = response.routes[0];
 

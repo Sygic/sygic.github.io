@@ -174,9 +174,13 @@ window.onload = function () {
     }
 
     function compute(coordinates) {
-        $.post("https://analytics.api.sygic.com/v0/api/speeding?key=" + apiKey, {
-            coordinates: coordinates
-        }).done(function (response) {
+        $.ajax({
+            url: "https://analytics.api.sygic.com/v0/api/speeding?key=" + apiKey,
+            method: "POST",
+            dataType: "json",
+            contentType: "application/json; charset=UTF-8",
+            data: JSON.stringify({coordinates: coordinates})
+        }).done(function (response){
             let matchedRoute = createPolyline(response.route, "#bababa");
 
             matchedRoute.addTo(matchedRouteLayer);
