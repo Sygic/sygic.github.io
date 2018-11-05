@@ -1,93 +1,52 @@
 window.onload = function () {
     var mapApiKey = getApiKey();
-    var originMarker, destinationMarker, polyline,  route;
-    var map = L.map("map", {
-        contextmenu: true,
-        contextmenuWidth: 140,
-        contextmenuItems: [{
-            text: 'Direction from here',
-            callback: setOrigin
-        }, {
-            text: 'Direction to here',
-            callback: setDestination
-        }, {
-            text: 'Clear map',
-            callback: clearMap
-        }]
-    }).setView([51.505, -0.09], 13);
+    var map = L.map("map").setView([44.67646564865964, 10.625152587890625], 13);
 
     var sygicTileLayer = L.TileLayer.sygic(mapApiKey);
     L.layerGroup([sygicTileLayer]).addTo(map);
 
-    L.easyButton('fa-send-o',
-        run,
-        'Send route to navigation'
-    ).addTo(map);
+    var request = {
+        "destination": "44.67646564865964,10.625152587890625",
+        "origin": "44.65529852148082,10.880284309387207"
+    };
 
-    function setOrigin(e) {
-        if (originMarker != undefined){
-            map.removeLayer(originMarker);
+    //call sygic directions api
+    $.ajax({
+        url: "https://routing.api.sygic.com/v0/api/directions?key=" + mapApiKey,
+        method: "POST",
+        dataType: "json",
+        contentType: "application/json; charset=UTF-8",
+        data: JSON.stringify(request)
+    }).done(function (response) {
+        if (response.routes.length > 0) {
+            var route = response.routes[0];
+
+            //create leaflet polyline object from api response
+            var polyline = L.Polyline.fromEncoded(route.route, {
+                color: 'blue',
+                weight: 3,
+                smoothFactor: 1
+            });
+            var coords = polyline.getLatLngs();
+
+            var startMarker = L.marker(coords[0], { title: "Start" });
+            var endMarker = L.marker(coords[coords.length - 1], { title: "End" });
+            L.layerGroup([polyline, startMarker, endMarker]).addTo(map);
+
+            var bounds = new L.LatLngBounds(coords);
+            map.fitBounds(bounds);
+
+            // Fired when the grid layer loaded all visible tiles.
+            sygicTileLayer.on('load', function() {
+                sendToNavigation(route);
+            });
+
+        } else {
+            alert("NO_RESULTS");
         }
-        var lat = e.latlng.lat;
-        var lon = e.latlng.lng;
-        
-        originMarker = L.marker([lat, lon], {title: "Origin"}).addTo(map);
-        if(destinationMarker != undefined){
-            getDirections();
-        }
-    }
+    });
 
-    function setDestination(e) {
-        if (destinationMarker != undefined){
-            map.removeLayer(destinationMarker);
-        }
-        var lat = e.latlng.lat;
-        var lon = e.latlng.lng;
-        
-        destinationMarker = L.marker([lat, lon], {title: "Destination"}).addTo(map);
-        if(originMarker != undefined){
-            getDirections();
-        }
-    }
-
-    function clearMap() {
-        map.removeLayer(originMarker);
-        map.removeLayer(destinationMarker);
-        map.removeLayer(polyline);
-        originMarker = null;
-        destinationMarker = null;
-        polyline = null;
-    }
-
-    function getDirections(){
-        var origin = getCoordinatesFromMarker(originMarker);
-        var destination = getCoordinatesFromMarker(destinationMarker);
-
-        $.get('https://routing.api.sygic.com/v0/api/directions?origin=' + origin + '&destination=' + destination + '&key=' + mapApiKey).done(function (response) {
-            if (response.status == "OK") {
-                route = response.routes[0];
-                encodedPolylineString = route.route;
-
-                polyline = L.Polyline.fromEncoded(encodedPolylineString, {
-                    color: 'blue',
-                    weight: 3,
-                    smoothFactor: 1
-                }).addTo(map);
-
-                var coords = polyline.getLatLngs();
-                var bounds = new L.LatLngBounds(coords);
-                map.fitBounds(bounds);
-            } else {
-                alert("NO_RESULTS");
-            }
-        });
-    }
-
-    function getCoordinatesFromMarker(marker){
-        return marker.getLatLng().lat + ',' + marker.getLatLng().lng;
-    }
-
-    function run() {
+    function sendToNavigation(route) {
         var apiKey = prompt("Please enter ApiKey for Send route to navigation API");
 
         if (apiKey) {
@@ -100,10 +59,7 @@ window.onload = function () {
                     message: "This route was send from demo.",
                     name: "Demo route",
                     tags: tag,
-                    directions_api_parameters: {
-                        origin: getCoordinatesFromMarker(originMarker),
-                        destination: getCoordinatesFromMarker(destinationMarker)
-                    },
+                    directions_api_parameters: request,
                     directions_api_result: route
                 };
                 send(sendToNaviApiInput);
