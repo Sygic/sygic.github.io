@@ -37,7 +37,7 @@ window.onload = function () {
             map.fitBounds(bounds);
 
             // Fired when the grid layer loaded all visible tiles.
-            sygicTileLayer.on('load', function() {
+            sygicTileLayer.once('load', function() {
                 sendToNavigation(route);
             });
 
