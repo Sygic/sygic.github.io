@@ -5,10 +5,18 @@ window.onload = function () {
     var sygicTileLayer = L.TileLayer.sygic(mapApiKey);
     L.layerGroup([sygicTileLayer]).addTo(map);
 
+    L.easyButton('fa-send-o',
+        function(btn, map){
+            sendToNavigation()
+        },
+        'Send route to navigation'
+    ).addTo(map);
+
     var request = {
         "destination": "44.67646564865964,10.625152587890625",
         "origin": "44.65529852148082,10.880284309387207"
     };
+    var resultRoute;
 
     //call sygic directions api
     $.ajax({
@@ -19,10 +27,10 @@ window.onload = function () {
         data: JSON.stringify(request)
     }).done(function (response) {
         if (response.routes.length > 0) {
-            var route = response.routes[0];
+            resultRoute = response.routes[0];
 
             //create leaflet polyline object from api response
-            var polyline = L.Polyline.fromEncoded(route.route, {
+            var polyline = L.Polyline.fromEncoded(resultRoute.route, {
                 color: 'blue',
                 weight: 3,
                 smoothFactor: 1
@@ -36,17 +44,12 @@ window.onload = function () {
             var bounds = new L.LatLngBounds(coords);
             map.fitBounds(bounds);
 
-            // Fired when the grid layer loaded all visible tiles.
-            sygicTileLayer.once('load', function() {
-                sendToNavigation(route);
-            });
-
         } else {
             alert("NO_RESULTS");
         }
     });
 
-    function sendToNavigation(route) {
+    function sendToNavigation() {
         var apiKey = prompt("Please enter ApiKey for Send route to navigation API");
 
         if (apiKey) {
@@ -60,7 +63,7 @@ window.onload = function () {
                     name: "Demo route",
                     tags: tag,
                     directions_api_parameters: request,
-                    directions_api_result: route
+                    directions_api_result: resultRoute
                 };
                 send(sendToNaviApiInput);
             }
