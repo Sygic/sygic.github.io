@@ -9,11 +9,11 @@ window.onload = function () {
     var sygicTileLayer = L.TileLayer.sygic(apiKey);
     L.layerGroup([sygicTileLayer]).addTo(map);
 
-    //we start in one depot, want to deliver to three different locations and then finish in another depot
+    //we start in one depot, want to deliver to different locations and then finish in another depot
     var problemDescription = {
-        startDepot: "52.93719,9.51316", //we start and end in same location
-        endDepot: "52.93994,9.52276",
-        waypointsToBeOptimized: ["52.90807,9.49030", "52.92994,9.51154", "52.92520,9.51922"]
+        startDepot: "48.21287,17.17401", //we start and end in same location
+        endDepot: "48.208310, 17.187978",
+        waypointsToBeOptimized: ["48.14713,17.08430", "48.15349,17.08556", "48.14932,17.21944", "48.16555,17.13828", "48.15032,17.15797"]
     }
 
     var optimizationApiInput = {
@@ -33,6 +33,14 @@ window.onload = function () {
             {
                 location_id: "waypoint-2",
                 coordinates: problemDescription.waypointsToBeOptimized[2]
+            },
+            {
+                location_id: "waypoint-3",
+                coordinates: problemDescription.waypointsToBeOptimized[3]
+            },
+            {
+                location_id: "waypoint-4",
+                coordinates: problemDescription.waypointsToBeOptimized[4]
             },
             {
                 location_id: "end",
@@ -67,6 +75,26 @@ window.onload = function () {
                     {
                         activity_type: "Visit",
                         location_id: "waypoint-2"
+                    }
+                ]
+            },
+            {
+                task_id: "task-to-waypoint-3",
+                priority: "critical",
+                activities: [
+                    {
+                        activity_type: "Visit",
+                        location_id: "waypoint-3"
+                    }
+                ]
+            },
+            {
+                task_id: "task-to-waypoint-4",
+                priority: "critical",
+                activities: [
+                    {
+                        activity_type: "Visit",
+                        location_id: "waypoint-4"
                     }
                 ]
             }
