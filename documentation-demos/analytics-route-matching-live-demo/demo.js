@@ -156,14 +156,6 @@ window.onload = function () {
             addMarker(evt.latlng);
         });
 
-    var colors = [
-        "#009fff", // blue for no speeding (0%)
-        "#fdff00", // yellow for 10% speeding
-        "#ff7400", // orange for 20% speeding
-        "#f00", // red for 30% speeding
-        "#000" // black for more
-    ];
-
     function createPolyline(line, color) {
         let polyline = L.Polyline.fromEncoded(line, {
             color: color,
@@ -175,13 +167,13 @@ window.onload = function () {
 
     function compute(coordinates) {
         $.ajax({
-            url: "https://analytics.api.sygic.com/v0/api/speeding?key=" + apiKey,
+            url: "https://analytics.api.sygic.com/v1/api/matching?key=" + apiKey,
             method: "POST",
             dataType: "json",
             contentType: "application/json; charset=UTF-8",
             data: JSON.stringify({coordinates: coordinates})
         }).done(function (response){
-            let matchedRoute = createPolyline(response.route, "#bababa");
+            let matchedRoute = createPolyline(response.route, "red");
 
             matchedRoute.addTo(matchedRouteLayer);
 
