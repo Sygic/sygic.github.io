@@ -1,6 +1,6 @@
 # Sygic maps demos
 
-Full documentation available here: <http://www.sygic.com/developers/maps-api-services/introduction>. You can get your api key to be used in this examples here: <http://www.sygic.com/business/contact-sales>
+Full documentation available here: <http://www.sygic.com/developers/maps-api-services/introduction>. You can get your api key to be used in this examples here: <http://www.sygic.com/enterprise/get-api-key/>
 
 To see demo of simple integration of google encoded polyline on Sygic maps use <https://sygic.github.io/simple-polyline-demo/?key=> ([code available here](https://github.com/sygic/sygic.github.io/tree/master/simple-polyline-demo) and [jsfiddle to play with here](http://jsfiddle.net/gh/get/library/pure/Sygic/sygic.github.io/tree/master/documentation-demos/simple-polyline-demo))
 
