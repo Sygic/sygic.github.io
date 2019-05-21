@@ -1,5 +1,5 @@
 window.onload = function () {
-    var apiKey = prompt("Please ender an API key valid for TomTom maps.");
+    var apiKey = prompt("Please enter an API key valid for Sygic maps.");
 
     if (apiKey == null || apiKey == "") {
         return location.reload();
