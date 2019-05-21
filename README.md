@@ -2,6 +2,10 @@
 
 Full documentation available here: <http://www.sygic.com/developers/maps-api-services/introduction>. You can get your api key to be used in this examples here: <http://www.sygic.com/enterprise/get-api-key/>
 
+To see demo of simple integration of Sygic Map layers visit <https://sygic.github.io/maps-layers-demo/?key=> ([code available here](https://github.com/sygic/sygic.github.io/tree/master/maps-layers-demo) and [jsfiddle to play with here](http://jsfiddle.net/gh/get/library/pure/Sygic/sygic.github.io/tree/master/documentation-demos/maps-layers-demo))
+
+To see demo of simple integration of Sygic Map vector tiles visit <https://sygic.github.io/vector-maps/?key=> ([code available here](https://github.com/sygic/sygic.github.io/tree/master/vector-maps) and [jsfiddle to play with here](http://jsfiddle.net/gh/get/library/pure/Sygic/sygic.github.io/tree/master/documentation-demos/vector-maps))
+
 To see demo of simple integration of google encoded polyline on Sygic maps use <https://sygic.github.io/simple-polyline-demo/?key=> ([code available here](https://github.com/sygic/sygic.github.io/tree/master/simple-polyline-demo) and [jsfiddle to play with here](http://jsfiddle.net/gh/get/library/pure/Sygic/sygic.github.io/tree/master/documentation-demos/simple-polyline-demo))
 
 To see demo of integration of multiple google encoded polylines on Sygic maps use <https://sygic.github.io/multiple-polyline-demo/?key=> ([code available here](https://github.com/sygic/sygic.github.io/tree/master/multiple-polyline-demo) and [jsfiddle to play with here](http://jsfiddle.net/gh/get/library/pure/Sygic/sygic.github.io/tree/master/documentation-demos/multiple-polyline-demo))
@@ -16,11 +20,9 @@ To see demo of sygic maps toll cost API use <https://sygic.github.io/toll-cost-d
 
 To see interactive analytics API demo use <https://sygic.github.io/analytics-route-matching-live-demo?key=> ([code available here](https://github.com/sygic/sygic.github.io/tree/master/analytics-route-matching-live-demo) and [jsfiddle to play with here](http://jsfiddle.net/gh/get/library/pure/Sygic/sygic.github.io/tree/master/documentation-demos/analytics-route-matching-live-demo))
 
-To see demo of sygic maps route matchin API use <https://sygic.github.io/analytics-route-matching-demo/?key=> ([code available here](https://github.com/sygic/sygic.github.io/tree/master/analytics-route-matching-demo) and [jsfiddle to play with here](http://jsfiddle.net/gh/get/library/pure/Sygic/sygic.github.io/tree/master/documentation-demos/analytics-route-matching-demo))
+To see demo of sygic maps route matching API use <https://sygic.github.io/analytics-route-matching-demo/?key=> ([code available here](https://github.com/sygic/sygic.github.io/tree/master/analytics-route-matching-demo) and [jsfiddle to play with here](http://jsfiddle.net/gh/get/library/pure/Sygic/sygic.github.io/tree/master/documentation-demos/analytics-route-matching-demo))
 
 To see demo of simple optimization & routing visualization use-case visit <https://sygic.github.io/simple-optimization-demo/?key=> ([code available here](https://github.com/sygic/sygic.github.io/tree/master/simple-optimization-demo) and [jsfiddle to play with here](http://jsfiddle.net/gh/get/library/pure/Sygic/sygic.github.io/tree/master/documentation-demos/simple-optimization-demo))
-
-To see demo of simple integration of Sygic Map layers visit <https://sygic.github.io/maps-layers-demo/?key=> ([code available here](https://github.com/sygic/sygic.github.io/tree/master/maps-layers-demo) and [jsfiddle to play with here](http://jsfiddle.net/gh/get/library/pure/Sygic/sygic.github.io/tree/master/documentation-demos/maps-layers-demo))
 
 To see demo of send route to navigation visit <https://sygic.github.io/send-to-navi-demo/?key=> ([code available here](https://github.com/sygic/sygic.github.io/tree/master/send-to-navi-demo) and [jsfiddle to play with here](http://jsfiddle.net/gh/get/library/pure/Sygic/sygic.github.io/tree/master/documentation-demos/send-to-navi-demo))
 
