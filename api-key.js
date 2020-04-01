@@ -4,6 +4,7 @@ var getApiKey = function () {
     if (search[0] == "key" && search[1]) {
         return search[1];
     } else {
-        alert("You have to provide api-key in the URL ?key=YOUR_API_KEY");
+        var apiKey = prompt("Please enter an API key valid for Sygic maps.");
+        return apiKey;
     }
 }
