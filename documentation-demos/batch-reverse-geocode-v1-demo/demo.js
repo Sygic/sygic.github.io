@@ -1,5 +1,5 @@
 window.onload = function () {
-    var apiKey = prompt("Please enter an API key valid for TomTom maps.");
+    var apiKey = getApiKey();
 
     if (apiKey == null || apiKey == "") {
         return location.reload();

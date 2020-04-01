@@ -31,7 +31,7 @@ window.onload = function () {
     }
 
     $.ajax({
-        url: "https://analytics.api.sygic.com/v0/api/speeding?key=" + apiKey,
+        url: "https://analytics.api.sygic.com/v1/api/speeding?key=" + apiKey,
         method: "POST",
         dataType: "json",
         contentType: "application/json; charset=UTF-8",

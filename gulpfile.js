@@ -9,7 +9,7 @@ gulp.task('clear-demos', function () {
         .pipe(clean());
 });
 
-gulp.task('prepare-demos', ['clear-demos'], function () {
+gulp.task('prepare-demos', gulp.series('clear-demos', function (done) {
     gulp.src([
         "**/index.html",
         "**/styles.css",
@@ -33,6 +33,7 @@ gulp.task('prepare-demos', ['clear-demos'], function () {
     }))
     .pipe(gulp.dest("./documentation-demos/"))
     .pipe(print());
-});
+    done();
+}));
 
-gulp.task('default', ['prepare-demos']);
+gulp.task('default', gulp.series('prepare-demos'));
