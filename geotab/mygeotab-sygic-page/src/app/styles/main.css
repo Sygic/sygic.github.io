@@ -1,0 +1,11 @@
+.hidden {
+    display: none !important;
+}
+
+#sygic-vehicle-list{
+    padding-left: 0px;
+}
+
+.sygic-vehicle-dimensions-fieldset {
+    padding:0 !important;
+}

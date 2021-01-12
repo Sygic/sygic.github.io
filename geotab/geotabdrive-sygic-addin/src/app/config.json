@@ -1,0 +1,22 @@
+{
+  "name": "Sygic truck",
+  "supportEmail": "os-team@sygic.com",
+  "version": "0.0.1",
+  "items": [
+    {
+      "url": "sygic.html",
+      "path": "DriveAppLink/",
+      "menuName": {
+        "en": "Sygic truck"
+      },
+      "icon": "images/icon.svg"
+    }
+  ],
+  "isSigned": "false",
+  "dev": {
+    "root": "sygic",
+    "dist": {
+      "host": "https://sygic.github.io/geotab/geotabdrive-sygic-addin/dist/"
+    }
+  }
+}

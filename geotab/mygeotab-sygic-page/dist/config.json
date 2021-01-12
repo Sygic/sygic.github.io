@@ -1,0 +1,15 @@
+{
+  "name": "Sygic truck settings",
+  "supportEmail": "os-team@sygic.com",
+  "version": "0.0.1",
+  "items": [
+    {
+      "url": "https://sygic.github.io/geotab/mygeotab-sygic-page/dist/mygeotabSygicPage.html",
+      "path": "",
+      "menuName": {
+        "en": "Sygic truck settings"
+      },
+      "icon": "https://sygic.github.io/geotab/mygeotab-sygic-page/dist/images/icon.svg"
+    }
+  ]
+}

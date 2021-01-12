@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  <meta name="description" content="">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Sygic truck</title>
+</head>
+
+<body>
+  <div id="sygic-app" class="hidden sygic-truck-geotab-addin">   
+    <div class="panel">
+      <h2 class="panel__title">Sygic truck</h2>
+      <table class='data-table'>
+        <tbody>
+          <tr>
+            <th>Vehicle</th>
+            <td><span id="sygic-vehicle" class="noTranslate"></span></td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+    <div class="panel">
+      <h3 class="panel__title panel__title__flex">My plans</h3>
+      <ul id="sygic-my-trips" class="menu-list"></ul>
+    </div>
+    <div class='panel'>
+      <div class="panel-button-heading">
+        <h3 class="panel__title panel__title__flex">
+          <svg class="svgIcon bigger panel__title-icon"><use xlink:href="#drive-truck"><svg viewBox="0 0 24 24" id="drive-truck"><g clip-path="url(#clip0)"><path fill-rule="evenodd" d="M0 2.5a1 1 0 011-1h11.607c.408 0 .985.123 1.483.51.545.422.91 1.094.91 1.99v15.5a1 1 0 11-2 0V4a.711.711 0 00-.054-.309.27.27 0 00-.081-.1.437.437 0 00-.139-.07.452.452 0 00-.119-.021H.5c-.552 0-.5-.448-.5-1z" clip-rule="evenodd"></path><path fill-rule="evenodd" d="M18.98 8H14V6h5.5a1 1 0 01.82.427l3.5 5A1 1 0 0124 12v7.5a1 1 0 01-1 1h-1.5v-2h.5v-6.185L18.98 8z" clip-rule="evenodd"></path><path fill-rule="evenodd" d="M18.75 21a1.25 1.25 0 100-2.5 1.25 1.25 0 000 2.5zm0 2a3.25 3.25 0 100-6.5 3.25 3.25 0 000 6.5zM5.75 21a1.25 1.25 0 100-2.5 1.25 1.25 0 000 2.5zm0 2a3.25 3.25 0 100-6.5 3.25 3.25 0 000 6.5z" clip-rule="evenodd"></path><path fill-rule="evenodd" d="M0 17.5a1 1 0 011-1A3.25 3.25 0 011 23a1 1 0 110-2 1.25 1.25 0 100-2.5 1 1 0 01-1-1zM0 14a1 1 0 011-1h12v2H1a1 1 0 01-1-1zM7.5 20a1 1 0 011-1h8v2h-8a1 1 0 01-1-1z" clip-rule="evenodd"></path><path d="M0 3h14v10H0V3zM8 17h6v3H8v-3z"></path><path fill-rule="evenodd" d="M21 8H0v9.5l13 .5 2.5 1.5 2-2 3.5.5 1.5 1v-6.5L21 8zm-.357 5l-1.786-2.5C18.5 10 18.12 10 18 10h-.5c-.167 0-.5.1-.5.5V13c0 .4.333.5.5.5h3c.4 0 .262-.333.143-.5z" clip-rule="evenodd"></path></g></svg></use></svg>
+          <span class="panel__title_text noTranslate">Vehicle</span>
+        </h3>
+        <button class="button button_small panel__title-button" id="sygic-edit-dimensions">
+          <svg class="svgIcon big bottom-margin"><use xlink:href="#drive-pencil"><svg viewBox="0 0 32 32" id="drive-pencil"><path d="M7.688 29.277l1.893-1.93-4.96-4.955-1.932 1.93v2.269h2.726v2.686zm11.02-19.594q0-.454-.454-.454-.19 0-.341.152L6.438 20.804q-.151.151-.151.378 0 .454.492.454.19 0 .34-.151l11.475-11.423q.114-.152.114-.379zm-1.136-4.047l8.786 8.775L8.786 32H0v-8.813zM32 7.679q0 1.097-.757 1.89l-3.522 3.518-8.786-8.813 3.522-3.48Q23.215 0 24.35 0q1.098 0 1.932.794l4.96 4.956Q32 6.58 32 7.678z"></path></svg></use></svg>
+        </button>
+      </div>
+      <div class="" id="sygic-dimensions-summary">
+        <table class='data-table'>
+          <tbody id="sygic-dimensions-summary-content">
+          </tbody>
+        </table>
+      </div>
+      <div class="hidden" id="sygic-dimensions-form">
+        <fieldset style="border: none;">
+          <div id="sygic-dimensions-form-content"></div>
+          <button id="sygic-save-dimensions">Save</button>
+        </fieldset>
+      </div>
+    </div>
+  </div>
+
+</body>
+
+</html>
