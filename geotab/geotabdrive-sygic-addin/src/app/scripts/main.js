@@ -186,11 +186,13 @@ geotab.addin.sygic = function (api, state) {
   }
 
   async function loadTrips(device) {
+    let today = new Date();
+    today.setHours(0,0,0);
     let myRoutes = await geotabApi.callAsync('Get', {
       typeName: 'Route',
       search: {
         routeType: 'Plan',
-        fromDate: new Date(),
+        fromDate: today,
         deviceSearch: {
           id: device.id
         }
