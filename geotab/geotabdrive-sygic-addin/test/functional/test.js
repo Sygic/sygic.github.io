@@ -31,7 +31,7 @@ describe('User visits addin', () => {
         page;
 
     // Open Page
-    before(async () => {
+    before(async () => {   
         browser = await puppeteer.launch(opts);
         page = await browser.newPage();
         // Allowing puppeteer access to the request - needed for mocks
@@ -99,11 +99,9 @@ describe('User visits addin', () => {
   
    // Confirm page displaying after initialized and focus is called
     it('should display root div', async () => {
-        
-        await page.waitFor('#app', {
+        await page.waitFor('#sygic-app', {
             visible: false
         });
-        
     });
 
     

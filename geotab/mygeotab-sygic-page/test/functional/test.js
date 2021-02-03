@@ -73,7 +73,7 @@ describe('User visits addin', () => {
         });
 
         // Login
-        await page.goto('http://localhost:9000/');
+        await page.goto('http://localhost:9001/');
         let loggedIn = await page.evaluate( () => {
             let dialogWindow = document.getElementById('loginDialog');
             return (dialogWindow.style.display = 'none' ? true : false);
