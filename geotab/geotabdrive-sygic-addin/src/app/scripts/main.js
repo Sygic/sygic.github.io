@@ -143,27 +143,30 @@ geotab.addin.sygic = function (api, state) {
   function createSygicUri(lat, lon){
     let uri = `com.sygic.aura://coordinate|${lon}|${lat}|drive`;
 
-    let dimensionsUri = 'truckSettings';
     let dimensions = getDimensionInputValues(elAddin);
+    let valueArray = [];
     if (dimensions.total_weight){
-      dimensionsUri+=`|wei=${dimensions.total_weight}`;
+      valueArray.push(`wei=${dimensions.total_weight}`)
     }
     if (dimensions.axle_weight){
-      dimensionsUri+=`|axl=${dimensions.axle_weight}`;
+      valueArray.push(`axw=${dimensions.axle_weight}`)
     }
     if (dimensions.total_length){
-      dimensionsUri+=`|len=${dimensions.total_length}`;
+      valueArray.push(`len=${dimensions.total_length}`)
     }
     if (dimensions.width){
-      dimensionsUri+=`|wid=${dimensions.width}`;
+      valueArray.push(`wid=${dimensions.width}`)
     }
     if (dimensions.height){
-      dimensionsUri+=`|hei=${dimensions.height}`;
+      valueArray.push(`hei=${dimensions.height}`)
     }
 
-    if (dimensionsUri.length > 13){
-      uri += `&&&${dimensionsUri}|rou=tru`;
+    if (valueArray.length > 0){
+      uri += `&&&truckSettings|${valueArray.join('&')}&rou=tru`;
     }
+
+    //docs: https://www.sygic.com/developers/professional-navigation-sdk/android/api-examples/custom-url
+    //example: com.sygic.aura://coordinate|17.1224|48.1450|drive&&&truckSettings|wei=20000&axw=10000&len=14993&wid=2501&hei=3005&rou=tru
     let location = encodeURI(uri);
     return location;
   }
