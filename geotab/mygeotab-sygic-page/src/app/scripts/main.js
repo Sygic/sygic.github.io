@@ -2,7 +2,7 @@ import _ from 'underscore';
 /**
  * @returns {{initialize: Function, focus: Function, blur: Function}}
  */
-geotab.addin.mygeotabSygicPage = function (api) {
+geotab.addin.mygeotabSygicPage = function (api, state) {
   'use strict';
   const addinDataGuid = 'ajk3ZmUzNmQtYjNlYS0yMGI';
 
@@ -16,6 +16,9 @@ geotab.addin.mygeotabSygicPage = function (api) {
         <div class="g-main g-main-col g-main_wider">
           <div class="g-name">
             <span class="ellipsis"><%= vehicle.name %></span>
+          </div>
+          <div class="g-comment">
+            <div class="secondaryData ellipsis"><%= vehicle_groups_string %></div>
           </div>
           <div class="g-comment">
             <div class="secondaryData ellipsis"><%= vehicle_dimensions_string %></div>
@@ -170,9 +173,12 @@ geotab.addin.mygeotabSygicPage = function (api) {
 
       let dimensionsTemplateObject = Object.keys(baseDimensions).map(key => ({value: baseDimensions[key], key: key, label: getDimensionsLabels()[key]}));
 
+      let vehicle_groups_string = device.groups.map(c => c.name).join(', ');
+
       let result = template({
         vehicle : device,
         vehicle_dimensions_string: dimensionDetailsString,
+        vehicle_groups_string: vehicle_groups_string,
         vehicle_dimensions: dimensionsTemplateObject
       })
       vehicleList.innerHTML += result;;
@@ -213,6 +219,40 @@ geotab.addin.mygeotabSygicPage = function (api) {
     })
   }
 
+  async function prepareData() {
+    let devices = await geotabApi.callAsync('Get', {
+      typeName: 'Device',
+      search: {
+        groups: state.getGroupFilter()
+      }
+    });
+
+    let groups = await geotabApi.callAsync('Get', {
+      typeName: 'Group',
+    });
+
+    let groupMap = Object.assign({}, ...groups.map(group => {
+      return {
+        [group.id]: group.name ? group.name : group.id
+      }
+    }));
+
+    devices.map(device => {
+      device.groups.map(group => {
+        group.name = groupMap[group.id];
+      })
+    });
+
+    let dimensions = await geotabApi.callAsync('Get', {
+      typeName: 'AddInData',
+      search: {
+        addInId: addinDataGuid
+      }
+    });
+    
+    return { devices, dimensions };
+  }
+
   return {
     /**
      * initialize() is called only once when the Add-In is first loaded. Use this function to initialize the
@@ -229,18 +269,6 @@ geotab.addin.mygeotabSygicPage = function (api) {
       if (freshState.translate) {
         freshState.translate(elAddin || '');
       }
-      let devices = await geotabApi.callAsync('Get', {
-        typeName: 'Device',
-      });
-
-      let dimensions = await geotabApi.callAsync('Get', {
-        typeName: 'AddInData',
-        search: {
-          addInId: addinDataGuid
-        }
-      });
-      renderDeviceList(devices, dimensions);
-
       // MUST call initializeCallback when done any setup
       initializeCallback();
     },
@@ -259,6 +287,9 @@ geotab.addin.mygeotabSygicPage = function (api) {
     focus: async function (freshApi, freshState) {
       elAddin.className = '';
       // show main content
+
+      let data = await prepareData();
+      renderDeviceList(data.devices, data.dimensions);
     },
 
     /**
