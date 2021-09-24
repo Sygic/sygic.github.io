@@ -1,15 +1,26 @@
 {
-  "name": "Sygic truck settings",
+  "name": "Sygic Professional Navigation",
   "supportEmail": "os-team@sygic.com",
   "version": "0.0.1",
-  "items": [{
-    "url": "mygeotabSygicPage.html",
-    "path": "",
-    "menuName": {
-      "en": "Sygic truck settings"
+  "solutionId": "sygicSygic",
+  "items": [
+    {
+      "url": "sygic.html",
+      "path": "DriveAppLink/",
+      "menuName": {
+        "en": "Sygic truck"
+      },
+      "icon": "images/icon.svg"
     },
-    "icon": "images/icon.svg"
-  }],
+    {
+      "url": "mygeotabSygicPage.html",
+      "path": "",
+      "menuName": {
+        "en": "Sygic truck settings"
+      },
+      "icon": "images/icon.svg"
+    }
+  ],
   "dev": {
     "root": "mygeotabSygicPage",
     "dist": {
