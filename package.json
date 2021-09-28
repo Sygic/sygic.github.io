@@ -22,5 +22,8 @@
     "gulp-print": "^5.0.0",
     "gulp-rename": "^1.2.2",
     "gulp": "^4.0.2"
+  },
+  "dependencies": {
+    "underscore": "^1.13.1"
   }
 }

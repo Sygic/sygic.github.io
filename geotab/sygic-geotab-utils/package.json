@@ -1,0 +1,24 @@
+{
+  "name": "sygic-geotab-utils",
+  "version": "1.0.0",
+  "description": "",
+  "main": "lib/utils.js",
+  "scripts": {
+    "compile": "babel src -d lib",
+    "watch": "watch \"npm run compile\" src",
+    "test": "mocha test/*.js --watch"
+  },
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "@babel/cli": "^7.15.7",
+    "@babel/core": "^7.8.3",
+    "@babel/preset-env": "^7.8.3",
+    "chai": "^4.3.4",
+    "mocha": "^9.1.2",
+    "watch": "^1.0.2"
+  },
+  "dependencies": {
+    "underscore": "^1.12.0"
+  }
+}

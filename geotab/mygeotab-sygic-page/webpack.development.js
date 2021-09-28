@@ -6,6 +6,7 @@ const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 
 module.exports = merge(common, {
     entry: './src/.dev/index.js',
+    devtool: 'eval-source-map',
     module: {
         rules: [
             {
@@ -68,5 +69,5 @@ module.exports = merge(common, {
         compress: true,
         port: 9001,
         index: 'mygeotabSygicPage.html'
-    }
+    },
 });

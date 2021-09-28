@@ -15,6 +15,12 @@ To build production version
 npm run build
 ```
 
+To ensure proper sygic-geotab-utils module inclusion in both projects you need to:
+
+1. ```cd ~/sygic-geotab-utils && npm link```
+2. ```cd ~/mygeotab-sygic-page && npm link sygic-geotab-utils```
+3. ```cd ~/geotabdrive-sygic-addin && npm link sygic-geotab-utils```
+
 ## My Geotab Sygic Page
 
 This page allows you to set dimensions of 'Devices' ([see here](https://github.com/Sygic/sygic.github.io/blob/master/geotab/mygeotab-sygic-page/src/app/scripts/main.js#L232)).
@@ -46,5 +52,11 @@ To install the addin in Geotab Drive APP use this [config.json](geotabdrive-sygi
 ### System architecture diagram
 
 ![Geotab Drive Sygic Addin](geotabdrive-sygic-addin-architecture.png)
+
+## Security and access rights
+
+To view vehicles in the list a user must have **"List devices"** (securityIdentifier: DeviceList) and **"View Add-in data"** (securityIdentifier: ViewAddInData) feature access in his security clearance.
+
+To modify vehicle dimensions a user must have **"Administer devices"** (securityIdentifier: DeviceAdmin) and **Manage Add-in data** (securityIdentifier: ManageAddInData) feature access in his security clearance.
 
 Contact: [os-team@sygic.com](mailto:os-team@sygic.com)
