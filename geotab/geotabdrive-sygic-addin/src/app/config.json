@@ -11,14 +11,6 @@
         "en": "Sygic truck"
       },
       "icon": "images/icon.svg"
-    },
-    {
-      "url": "mygeotabSygicPage.html",
-      "path": "",
-      "menuName": {
-        "en": "Sygic truck settings"
-      },
-      "icon": "images/icon.svg"
     }
   ],
   "isSigned": "false",

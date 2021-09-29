@@ -5,14 +5,6 @@
   "solutionId": "sygicSygic",
   "items": [
     {
-      "url": "sygic.html",
-      "path": "DriveAppLink/",
-      "menuName": {
-        "en": "Sygic truck"
-      },
-      "icon": "images/icon.svg"
-    },
-    {
       "url": "mygeotabSygicPage.html",
       "path": "",
       "menuName": {
