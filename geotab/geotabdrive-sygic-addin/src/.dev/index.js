@@ -36,6 +36,11 @@ import GeotabApi from './api';
 // Exposing handler to let the translate function have access to it
 import './navbar/NavBuilder';
 
+/* Translations */
+import Translator from './lang/Translator';
+let language = localStorage.language ? localStorage.language : 'en';
+global.translator = new Translator('#app', language);
+
 // Global Translate function
 global.state.translate = function(target, language) {
     

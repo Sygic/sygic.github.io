@@ -50,7 +50,7 @@ geotab.addin.mygeotabSygicPage = function (api, state) {
             <input type='number' name=<%= name %> class='geotabFormEditField' value=<%= value %> />
           </div>
         <% }) %>
-        <button class='geotabButton sygic-vehicle-dimensions-save' >Apply changes</button>
+        <button class='geotabButton sygic-vehicle-dimensions-save' ><%= apply_changes %></button>
       </fieldset>
     </div>
   </div>
@@ -62,7 +62,7 @@ geotab.addin.mygeotabSygicPage = function (api, state) {
   function getDimensionsString(dimensionsObject) {
     let iterator = 0;
     let dimensionDetailsString = '';
-    let labels = Dimensions.getLabels();
+    let labels = Dimensions.getLabels(state);
     for (const key in dimensionsObject) {
       if (dimensionsObject.hasOwnProperty(key)) {
         const value = dimensionsObject[key];
@@ -106,7 +106,7 @@ geotab.addin.mygeotabSygicPage = function (api, state) {
       let dimensionsTemplateObject = Object.keys(baseDimensions).map((key) => ({
         value: baseDimensions[key],
         key: key,
-        label: Dimensions.getLabels()[key],
+        label: Dimensions.getLabels(state)[key],
       }));
 
       let vehicle_groups_string = device.groups.map((c) => c.name).join(', ');
@@ -116,6 +116,7 @@ geotab.addin.mygeotabSygicPage = function (api, state) {
         vehicle_groups_string: vehicle_groups_string,
         vehicle_dimensions: dimensionsTemplateObject,
         user: user,
+        apply_changes: state.translate('Apply changes'),
       });
       vehicleList.innerHTML += result;
     }

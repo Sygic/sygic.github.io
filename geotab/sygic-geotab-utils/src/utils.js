@@ -1,5 +1,17 @@
 import _ from 'underscore';
 
+const Filters = (() => {
+  let RequiredEditFilters = ['DeviceAdmin', 'ManageAddInData'];
+  let RequiredViewFilters = ['DeviceList', 'ViewAddInData'];
+  let Joker = 'Everything';
+  return {
+    All: RequiredEditFilters.concat(RequiredViewFilters).concat(Joker),
+    RequiredEditFilters,
+    RequiredViewFilters,
+    Joker
+  };
+})();
+
 class RequiredFilters {
   constructor(requiredFiltersArray) {
     this.requiredFilters = Object.assign(
@@ -19,14 +31,14 @@ class RequiredFilters {
   isInitialized() {
     return (
       _.every(this.requiredFilters, (f) => f !== undefined) ||
-      this.requiredFilters['Everything'] === true
+      this.requiredFilters[Filters.Joker] === true
     );
   }
 
   hasAllRequiredFilters() {
     return (
       _.every(this.requiredFilters, (f) => f === true) ||
-      this.requiredFilters['Everything'] === true
+      this.requiredFilters[Filters.Joker] === true
     );
   }
 }
@@ -42,14 +54,14 @@ export class User {
         (c) => c.id === userSecurityGroups[0]
       );
       this.buildPermissionTree(allSecurityGroups, securityGroupDetail);
-      this.canModify = this.hasClearanceInTree(securityGroupDetail, [
-        'DeviceAdmin',
-        'ManageAddInData',
-      ]);
-      this.canView = this.hasClearanceInTree(securityGroupDetail, [
-        'DeviceList',
-        'ViewAddInData',
-      ]);
+      this.canModify = this.hasClearanceInTree(
+        securityGroupDetail,
+        Filters.RequiredEditFilters
+      );
+      this.canView = this.hasClearanceInTree(
+        securityGroupDetail,
+        Filters.RequiredViewFilters
+      );
     }
   }
 
@@ -59,14 +71,7 @@ export class User {
       if (securityGroup.securityFilters)
         securityGroup.securityFilters = _.filter(
           securityGroup.securityFilters,
-          (f) =>
-            [
-              'DeviceAdmin',
-              'ManageAddInData',
-              'DeviceList',
-              'ViewAddInData',
-              'Everything',
-            ].includes(f.securityIdentifier)
+          (f) => Filters.All.includes(f.securityIdentifier)
         );
       if (securityGroup.color) delete securityGroup.color;
       if (securityGroup.reference) delete securityGroup.reference;
@@ -99,7 +104,7 @@ export class User {
         parent.securityFilters,
         (f) =>
           requiredSecurityFilter.includes(f.securityIdentifier) ||
-          f.securityIdentifier === 'Everything'
+          f.securityIdentifier === Filters.Joker
       );
 
       _.each(filtersFor, (filter) => {
@@ -140,12 +145,12 @@ export let Dimensions = {
     axle_weight: undefined,
     total_length: undefined,
   }),
-  getLabels: () => ({
-    width: 'Width (mm)',
-    height: 'Height (mm)',
-    total_weight: 'Total weight (kg)',
-    axle_weight: 'Axle weight (kg)',
-    total_length: 'Total length (mm)',
+  getLabels: (state) => ({
+    width: state.translate('Width (mm)'),
+    height: state.translate('Height (mm)'),
+    total_weight: state.translate('Total weight (kg)'),
+    axle_weight: state.translate('Axle weight (kg)'),
+    total_length: state.translate('Total length (mm)'),
   }),
   getInputValues: (parentElement) => {
     let emptyDimensions = Dimensions.getEmpty();

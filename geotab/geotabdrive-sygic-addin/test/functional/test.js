@@ -99,7 +99,7 @@ describe('User visits addin', () => {
   
    // Confirm page displaying after initialized and focus is called
     it('should display root div', async () => {
-        await page.waitFor('#sygic-app', {
+        await page.waitFor('#app', {
             visible: false
         });
     });

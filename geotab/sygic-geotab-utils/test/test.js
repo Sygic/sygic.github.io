@@ -39,6 +39,18 @@ describe('User security tests', () => {
     assert.isTrue(user.canModify);
     assert.isTrue(user.canView);
   });
+  
+  it('single securitygroup - no filters - deny all', () => {
+    let allSecurityGroups = [
+      {
+        id: 'Admin',
+        securityFilters: [],
+      },
+    ];
+    let user = new User(createUser('Admin'), allSecurityGroups);
+    assert.isFalse(user.canModify);
+    assert.isFalse(user.canView);
+  })
 
   it('inherited securitygroups - should resolve filters - override deny', () => {
     let allSecurityGroups = [

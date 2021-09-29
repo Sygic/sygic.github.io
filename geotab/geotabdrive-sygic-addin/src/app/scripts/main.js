@@ -134,7 +134,7 @@ geotab.addin.sygic = function (api, state) {
   `;
 
   // the root container
-  let elAddin = document.getElementById('sygic-app');
+  let elAddin = document.getElementById('app');
 
   let myDimensions = null;
 
@@ -142,7 +142,7 @@ geotab.addin.sygic = function (api, state) {
     let summaryTemplate = _.template(dimensionsDataTemplate);
     let formTemplate = _.template(dimensionsFormTemplate);
     let summaryTemplateObject = {};
-    let labels = Dimensions.getLabels();
+    let labels = Dimensions.getLabels(state);
     for (const key in dimensions) {
       const value = dimensions[key];
       summaryTemplateObject[key] = {
@@ -225,7 +225,7 @@ geotab.addin.sygic = function (api, state) {
 
   function formatStopDate(stopDateString) {
     let stopDate = new Date(stopDateString);
-    return `at ${stopDate.format('HH:mm')} on ${stopDate.format('DD.MM')}`;
+    return `${state.translate('at')} ${stopDate.format('HH:mm')} ${state.translate('on')} ${stopDate.format('DD.MM')}`;
   }
 
   async function loadTrips(device) {
@@ -245,7 +245,7 @@ geotab.addin.sygic = function (api, state) {
     let tripsContainer = elAddin.querySelector('#sygic-my-trips');
     tripsContainer.innerHTML = '';
 
-    myRoutes.forEach(async (route) => {
+    myRoutes.forEach((route) => {
       let routeListItem = createElement(
         'li',
         {
@@ -275,9 +275,13 @@ geotab.addin.sygic = function (api, state) {
       createElement(
         'div',
         {
-          content: `${
-            route.routePlanItemCollection.length
-          } stops, first stop ${formatStopDate(firstStop.activeFrom)}`,
+          content: `${route.routePlanItemCollection.length} ${
+            route.routePlanItemCollection.length == 1
+              ? state.translate('waypoint')
+              : state.translate('waypoints')
+          }, ${state.translate('first waypoint')} ${formatStopDate(
+            firstStop.activeFrom
+          )}`,
           classes: ['caption'],
         },
         container
@@ -360,7 +364,7 @@ geotab.addin.sygic = function (api, state) {
 
     return myDimensions;
   }
-  
+
   async function handleEditFunction() {
     let session = await geotabApi.getSessionAsync();
     let geotabUser = await geotabApi.callAsync('Get', {
@@ -378,7 +382,7 @@ geotab.addin.sygic = function (api, state) {
     let user = new User(geotabUser[0], geotabClearances);
     if (user.canModify === false) {
       let editBtn = document.getElementById('sygic-edit-dimensions');
-      editBtn.className = editBtn.className+=' hidden';
+      editBtn.className = editBtn.className += ' hidden';
     }
   }
 
@@ -399,7 +403,7 @@ geotab.addin.sygic = function (api, state) {
         freshState.translate(elAddin || '');
       }
       await handleEditFunction();
-      
+
       document
         .getElementById('sygic-edit-dimensions')
         .addEventListener('click', (event) => {
