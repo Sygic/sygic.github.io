@@ -134,7 +134,7 @@ geotab.addin.sygic = function (api, state) {
   `;
 
   // the root container
-  let elAddin = document.getElementById('app');
+  let elAddin = document.getElementById('sygic-app');
 
   let myDimensions = null;
 

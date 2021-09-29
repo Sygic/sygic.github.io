@@ -53,7 +53,7 @@ module.exports = merge(common, {
                     'css-loader',
                     {
                         loader: './src/.dev/loaders/css-sandbox/css-sandbox.js',
-                        options: { prefix: '#mygeotabSygicDrive' }
+                        options: { prefix: '#sygic-app' }
                     }
                 ]
             },

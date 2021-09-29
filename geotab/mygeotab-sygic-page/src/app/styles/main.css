@@ -1,11 +1,11 @@
-#mygeotabSygicPage .hidden {
+.hidden {
   display: none !important;
 }
 
-#mygeotabSygicPage #sygic-vehicle-list {
+#sygic-vehicle-list {
   padding-left: 0px;
 }
 
-#mygeotabSygicPage .sygic-vehicle-dimensions-fieldset {
+.sygic-vehicle-dimensions-fieldset {
   padding: 0 !important;
 }
