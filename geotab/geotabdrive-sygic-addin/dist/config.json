@@ -8,7 +8,12 @@
       "url": "https://sygic.github.io/geotab/geotabdrive-sygic-addin/dist/sygic.html",
       "path": "DriveAppLink/",
       "menuName": {
-        "en": "Sygic truck"
+        "en": "Sygic Truck Settings",
+        "de": "Sygic Truck Einstellungen",
+        "es": "Configuración de atributos de vehículo en Sygic",
+        "fr": "Paramètres Sygic Truck",
+        "it": "Sygic Truck Impostazioni",
+        "pl": "Ustawienia Sygic Truck"
       },
       "icon": "https://sygic.github.io/geotab/geotabdrive-sygic-addin/dist/images/icon.svg"
     }

@@ -225,7 +225,9 @@ geotab.addin.sygic = function (api, state) {
 
   function formatStopDate(stopDateString) {
     let stopDate = new Date(stopDateString);
-    return `${state.translate('at')} ${stopDate.format('HH:mm')} ${state.translate('on')} ${stopDate.format('DD.MM')}`;
+    return `${state.translate('at')} ${stopDate.format(
+      'HH:mm'
+    )} ${state.translate('on')} ${stopDate.format('DD.MM')}`;
   }
 
   async function loadTrips(device) {
@@ -277,9 +279,9 @@ geotab.addin.sygic = function (api, state) {
         {
           content: `${route.routePlanItemCollection.length} ${
             route.routePlanItemCollection.length == 1
-              ? state.translate('waypoint')
-              : state.translate('waypoints')
-          }, ${state.translate('first waypoint')} ${formatStopDate(
+              ? state.translate('stop')
+              : state.translate('stops')
+          }, ${state.translate('first stop')} ${formatStopDate(
             firstStop.activeFrom
           )}`,
           classes: ['caption'],

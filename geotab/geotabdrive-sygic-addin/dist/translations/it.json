@@ -1,0 +1,16 @@
+﻿{
+  "Width (mm)": "Larghezza (mm)",
+  "Height (mm)": "Altezza (mm)",
+  "Apply Changes" : "Applica i cambiamenti",
+  "Sygic Truck Settings": "Sygic Truck Impostazioni",
+  "Total weight (kg)" : "Peso totale (kg)",
+  "Axle weight (kg)" : "Peso dell'asse (kg)",
+  "Total length (mm)" : "Lunghezza totale (mm)",
+  "Vehicle" : "Veicolo",
+  "My Plans" : "I miei piani di percorso",
+  "stop" : "fermata",
+  "stops" : "fermate",
+  "first stop" : "prima tappa",
+  "at" : "um",
+  "on": "am"
+}

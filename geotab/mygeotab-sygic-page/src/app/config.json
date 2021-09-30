@@ -8,7 +8,12 @@
       "url": "mygeotabSygicPage.html",
       "path": "",
       "menuName": {
-        "en": "Sygic truck settings"
+        "en": "Sygic Truck Settings",
+        "de": "Sygic Truck Einstellungen",
+        "es": "Configuración de atributos de vehículo en Sygic",
+        "fr": "Paramètres Sygic Truck",
+        "it": "Sygic Truck Impostazioni",
+        "pl": "Ustawienia Sygic Truck"
       },
       "icon": "images/icon.svg"
     }

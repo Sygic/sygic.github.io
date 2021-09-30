@@ -1,16 +1,16 @@
 ﻿{
   "Width (mm)": "Breite (mm)",
   "Height (mm)": "Höhe (mm)",
-  "Apply changes" : "Änderungen übernehmen",
-  "truck settings": "LKW Einstellungen",
+  "Apply Changes" : "Änderungen übernehmen",
+  "Sygic Truck Settings": "Sygic Truck Einstellungen",
   "Total weight (kg)" : "Gesamtgewicht (kg)",
   "Axle weight (kg)" : "Achsgewicht (kg)",
   "Total length (mm)" : "Gesamtlänge (mm)",
   "Vehicle" : "Fahrzeug",
-  "My plans" : "Meine Pläne",
-  "waypoint" : "Wegpunkt",
-  "waypoints" : "Wegpunkte",
-  "first waypoint" : "erste Wegpunkt",
+  "My Plans" : "Meine Routenpläne",
+  "stop" : "Stopp",
+  "stops" : "Stopps",
+  "first stop" : "erster Stopp",
   "at" : "um",
   "on": "am"
 }

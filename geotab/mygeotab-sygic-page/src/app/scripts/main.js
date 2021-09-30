@@ -116,7 +116,7 @@ geotab.addin.mygeotabSygicPage = function (api, state) {
         vehicle_groups_string: vehicle_groups_string,
         vehicle_dimensions: dimensionsTemplateObject,
         user: user,
-        apply_changes: state.translate('Apply changes'),
+        apply_changes: state.translate('Apply Changes'),
       });
       vehicleList.innerHTML += result;
     }

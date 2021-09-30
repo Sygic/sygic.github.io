@@ -79,6 +79,5 @@
     "timeout": 10000,
     "reporter": "nyan"
   },
-  "dependencies": {
-  }
+  "dependencies": {}
 }
