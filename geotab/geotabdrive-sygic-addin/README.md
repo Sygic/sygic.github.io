@@ -6,3 +6,5 @@ TODO:
 
 
 To test translations use ```globalThis.state.translate(null, "de")``` in console
+
+You can run production version of drive addin in browser https://my1291.geotab.com/drive/default.html#main
