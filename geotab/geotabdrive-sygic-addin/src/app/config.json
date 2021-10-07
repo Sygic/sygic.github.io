@@ -22,7 +22,7 @@
   "dev": {
     "root": "sygic",
     "dist": {
-      "host": "https://sygic.github.io/geotab/geotabdrive-sygic-addin/dist/"
+      "host": "https://cdn.jsdelivr.net/gh/sygic/sygic.github.io@__COMMIT_HASH__/geotab/geotabdrive-sygic-addin/dist/"
     }
   }
 }

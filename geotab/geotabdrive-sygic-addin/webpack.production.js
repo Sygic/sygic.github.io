@@ -20,8 +20,13 @@ const config = require('./src/app/config.json');
  * @param {string} path path to file
  */
 const transform = function (content, path) {
+    let commitHash = require('child_process')
+        .execSync('git rev-parse --short HEAD')
+        .toString()
+        .trim();
+    
     let config = JSON.parse(content);
-    let host = config.dev.dist.host;
+    let host = config.dev.dist.host.replace("__COMMIT_HASH__", commitHash);
     let len = config.items.length;
     // Appending the host to all item's url and icon
     for(let i=0;i<len;i++){

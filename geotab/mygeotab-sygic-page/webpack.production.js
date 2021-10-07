@@ -12,119 +12,124 @@ const merge = require('webpack-merge');
 const common = require('./webpack.common.js');
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 const config = require('./src/app/config.json');
+const webpack = require('webpack');
 
 /**
  * Removes "dev" element of the config tree on production build
- * 
+ *
  * @param {Buffer} content content of file
  * @param {string} path path to file
  */
 const transform = function (content, path) {
-    let config = JSON.parse(content);
-    let host = config.dev.dist.host;
-    let len = config.items.length;
-    // Appending the host to all item's url and icon
-    for(let i=0;i<len;i++){
-        config.items[i].url = host + config.items[i].url;
-        config.items[i].icon = host + config.items[i].icon; 
-    }
+  // get git info from command line
+  let commitHash = require('child_process')
+    .execSync('git rev-parse --short HEAD')
+    .toString()
+    .trim();
+  
+  let config = JSON.parse(content);
+  let host = config.dev.dist.host.replace("__COMMIT_HASH__", commitHash);
+  let len = config.items.length;
+  // Appending the host to all item's url and icon
+  for (let i = 0; i < len; i++) {
+    config.items[i].url = host + config.items[i].url;
+    config.items[i].icon = host + config.items[i].icon;
+  }
 
-    delete config['dev'];
-    let response = JSON.stringify(config, null, 2);
-    // Returned string is written to file
-    return response;
-}
+  delete config['dev'];
+  let response = JSON.stringify(config, null, 2);
+  // Returned string is written to file
+  return response;
+};
 
 module.exports = merge(common, {
-    devtool: '',
-    entry: './src/app/index.js',
-    module: {
-        rules: [
-            {
-                test: /\.css$/,
-                exclude: /\.dev/,
-                use: [
-                    {
-                        loader: MiniCssExtractPlugin.loader,
-                        options: {
-                            publicPath: config.dev.dist.host
-                        }
-                    },
-                    'css-loader',
-                    {
-                        loader: './src/.dev/loaders/css-sandbox/css-sandbox.js',
-                        options: { prefix: '#mygeotabSygicPage' }
-                    }
-                ]
+  devtool: '',
+  entry: './src/app/index.js',
+  module: {
+    rules: [
+      {
+        test: /\.css$/,
+        exclude: /\.dev/,
+        use: [
+          {
+            loader: MiniCssExtractPlugin.loader,
+            options: {
+              publicPath: config.dev.dist.host,
             },
-            {
-                enforce: 'pre',
-                test: /\.js$/,
-                exclude: [/node_modules/, /\.dev/],
-                use: [
-                    {
-                        loader: 'eslint-loader',
-                        options: {
-                        formatter: require('eslint/lib/cli-engine/formatters/stylish')
-                        },
-                    },
-                ],
+          },
+          'css-loader',
+          {
+            loader: './src/.dev/loaders/css-sandbox/css-sandbox.js',
+            options: { prefix: '#mygeotabSygicPage' },
+          },
+        ],
+      },
+      {
+        enforce: 'pre',
+        test: /\.js$/,
+        exclude: [/node_modules/, /\.dev/],
+        use: [
+          {
+            loader: 'eslint-loader',
+            options: {
+              formatter: require('eslint/lib/cli-engine/formatters/stylish'),
             },
-            {
-                test: /\.js$/,
-                exclude: [/node_modules/, /\.dev/],
-                use: {
-                    loader: 'babel-loader',
-                    options: {
-                        presets: ['@babel/preset-env']
-                    }
-                },
-            },
-            {
-                test: /\.html$/,
-                exclude: /\.dev/,
-                use: [
-                    {
-                        loader: 'html-loader',
-                        options: { minimize: true }
-                    }
-                ]
-            },
-            {
-                test: /\.(png|svg|jpg|gif)$/,
-                exclude: /\.dev/,
-                use: [
-                    'file-loader'
-                ]
-            }
-        ]
-    },
-    plugins: [
-        new FixStyleOnlyEntriesPlugin(),
-        new OptimizeCSSAssetsPlugin({}),
-        new UglifyJsPlugin({
-            test: /\.js(\?.*)?$/i
-        }),
-        new ImageminPlugin({
-            exclude: /dev/,
-            test: /\.(jpe?g|png|gif|svg)$/,
-            plugins: [
-                ImageminMozjpeg(),
-                ImageminPngquant(),
-                ImageminGiflossy(),
-                ImageminSvgo({ cleanupIDs: false})
-            ]
-        }),
-        new CopyWebpackPlugin([
-            { from: './src/app/images/icon.svg', to: 'images/'},
-            { 
-                from: './src/app/config.json',
-                transform: transform
-            },
-            { from: './src/app/translations/', to: 'translations/' }
-        ])
+          },
+        ],
+      },
+      {
+        test: /\.js$/,
+        exclude: [/node_modules/, /\.dev/],
+        use: {
+          loader: 'babel-loader',
+          options: {
+            presets: ['@babel/preset-env'],
+          },
+        },
+      },
+      {
+        test: /\.html$/,
+        exclude: /\.dev/,
+        use: [
+          {
+            loader: 'html-loader',
+            options: { minimize: true },
+          },
+        ],
+      },
+      {
+        test: /\.(png|svg|jpg|gif)$/,
+        exclude: /\.dev/,
+        use: ['file-loader'],
+      },
     ],
-    output: {
-        publicPath: config.dev.dist.host
-    }
+  },
+  plugins: [
+    new FixStyleOnlyEntriesPlugin(),
+    new OptimizeCSSAssetsPlugin({}),
+    new UglifyJsPlugin({
+      test: /\.js(\?.*)?$/i,
+    }),
+    new ImageminPlugin({
+      exclude: /dev/,
+      test: /\.(jpe?g|png|gif|svg)$/,
+      plugins: [
+        ImageminMozjpeg(),
+        ImageminPngquant(),
+        ImageminGiflossy(),
+        ImageminSvgo({ cleanupIDs: false }),
+      ],
+    }),
+    new CopyWebpackPlugin([
+      { from: './src/app/images/icon.svg', to: 'images/' },
+      {
+        from: './src/app/config.json',
+        transform: transform,
+      },
+      { from: './src/app/translations/', to: 'translations/' },
+    ])
+  ],
+  output: {
+    publicPath: config.dev.dist.host,
+  },
 });
