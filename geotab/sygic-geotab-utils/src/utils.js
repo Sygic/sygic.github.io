@@ -175,7 +175,6 @@ export function DimensionsStorage(geotabApi) {
           addInId: addinDataGuid,
         },
       });
-      console.log(result)
       return result;
     },
     getDimensionsAsync: async (vehicleId) => {

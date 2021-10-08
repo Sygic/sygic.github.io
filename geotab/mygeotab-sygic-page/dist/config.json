@@ -5,7 +5,7 @@
   "solutionId": "sygicSygic",
   "items": [
     {
-      "url": "https://cdn.jsdelivr.net/gh/sygic/sygic.github.io@fe9d349/geotab/mygeotab-sygic-page/dist/mygeotabSygicPage.html",
+      "url": "https://cdn.jsdelivr.net/gh/sygic/sygic.github.io@d637f2b/geotab/mygeotab-sygic-page/dist/mygeotabSygicPage.html",
       "path": "",
       "menuName": {
         "en": "Sygic Truck Settings",
@@ -15,7 +15,8 @@
         "it": "Sygic Truck Impostazioni",
         "pl": "Ustawienia Sygic Truck"
       },
-      "icon": "https://cdn.jsdelivr.net/gh/sygic/sygic.github.io@fe9d349/geotab/mygeotab-sygic-page/dist/images/icon.svg"
+      "icon": "https://cdn.jsdelivr.net/gh/sygic/sygic.github.io@d637f2b/geotab/mygeotab-sygic-page/dist/images/icon.svg"
     }
-  ]
+  ],
+  "isSigned": "false"
 }
