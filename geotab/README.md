@@ -9,7 +9,7 @@ npm install
 npm run serve
 ```
 
-To build production version
+To build production version (can be run in respective addon folders or in root folder to create common config.json)
 
 ```
 npm run build
