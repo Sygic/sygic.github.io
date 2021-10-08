@@ -82,7 +82,7 @@ geotab.addin.mygeotabSygicPage = function (api, state) {
     let dimensionsDict = Object.assign(
       {},
       ...dimensions.map((dimension) => {
-        let data = JSON.parse(dimension.data);
+        let data = dimension.details;
         return {
           [data.vehicle_id]: data.dimensions,
         };

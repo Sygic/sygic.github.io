@@ -175,6 +175,7 @@ export function DimensionsStorage(geotabApi) {
           addInId: addinDataGuid,
         },
       });
+      console.log(result)
       return result;
     },
     getDimensionsAsync: async (vehicleId) => {
@@ -188,7 +189,7 @@ export function DimensionsStorage(geotabApi) {
       if (result && result.length > 0) {
         let item = result[0];
         return {
-          dimensions: JSON.parse(item.data).dimensions,
+          dimensions: item.details.dimensions,
           id: item.id,
         };
       }
@@ -198,11 +199,11 @@ export function DimensionsStorage(geotabApi) {
         typeName: 'AddInData',
         entity: {
           addInId: addinDataGuid,
-          data: JSON.stringify({
+          details: {
             vehicle_id: vehicleId,
             dimensions: dimensions,
-          }),
-        },
+          }
+        }
       });
       return result;
     },
@@ -212,11 +213,11 @@ export function DimensionsStorage(geotabApi) {
         entity: {
           addInId: addinDataGuid,
           id: dimensionsId,
-          data: JSON.stringify({
+          details: {
             vehicle_id: vehicleId,
             dimensions: dimensions,
-          }),
-        },
-      }),
+          }
+        }
+      })
   };
 }
