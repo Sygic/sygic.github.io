@@ -12,7 +12,16 @@ const merge = require('webpack-merge');
 const common = require('./webpack.common.js');
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 const config = require('./src/app/config.json');
-const webpack = require('webpack');
+
+const getHost = function() {
+  // get git info from command line
+  let commitHash = require('child_process')
+      .execSync('git rev-parse --short HEAD')
+      .toString()
+      .trim();
+  let host = config.dev.dist.host.replace("__COMMIT_HASH__", commitHash);
+  return host;
+}
 
 /**
  * Removes "dev" element of the config tree on production build
@@ -21,14 +30,10 @@ const webpack = require('webpack');
  * @param {string} path path to file
  */
 const transform = function (content, path) {
-  // get git info from command line
-  let commitHash = require('child_process')
-    .execSync('git rev-parse --short HEAD')
-    .toString()
-    .trim();
-  
   let config = JSON.parse(content);
-  let host = config.dev.dist.host.replace("__COMMIT_HASH__", commitHash);
+
+  let host = getHost();
+  console.log(host)
   let len = config.items.length;
   // Appending the host to all item's url and icon
   for (let i = 0; i < len; i++) {
@@ -130,6 +135,6 @@ module.exports = merge(common, {
     ])
   ],
   output: {
-    publicPath: config.dev.dist.host,
+    publicPath: getHost(),
   },
 });

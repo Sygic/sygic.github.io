@@ -1,0 +1,13 @@
+{
+  "name": "geotab",
+  "version": "1.0.0",
+  "description": "Clone repository. Navigate in respective addon directory ([geotabdrive-sygic-addin](geotabdrive-sygic-addin) or [mygeotab-sygic-page](mygeotab-sygic-page))",
+  "main": "index.js",
+  "scripts": {
+    "build": "npm run build --prefix geotabdrive-sygic-addin && npm run build --prefix mygeotab-sygic-page",
+    "postbuild": "node merge-and-copy-configs.js"
+  },
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {  }
+}
