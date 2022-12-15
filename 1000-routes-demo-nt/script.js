@@ -58,10 +58,10 @@ window.onload = function () {
 
     let dropdownObj = {};
 
-    fetch(window.source)
+    fetch('results.txt')
     .then(response => response.text())
     .then((data) => {
-        const lines = data.split('\r\n');
+        const lines = data.split('\n');
 
         for (let index = 0; index < lines.length; index++) {
             const line = lines[index];
