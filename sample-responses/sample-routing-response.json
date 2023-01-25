@@ -1,0 +1,47 @@
+{
+    "routes": [
+        {
+            "route": "qgzwHjbh@MaIy@wZAq@ScEKsBMu@iBwNU}@k@yA]Ue@iAEcBJq@d@aA`Aa@`@Oz@]b@OPIPG^@h@Vd@p@PtAMrAc@z@y@rAKTUfBDzDZtI@fEZvHJfDb@hPR`NHdSAjMOdLm@jPW~Dq@|Hy@fHkAdIeBbKkB~IuDjOsFjQ}F|OaGhPiSlj@oIjUeCtGo@tAc@|@oA`CuAhC{A`CyDhFqAzAeEbEiFbEqBjASLaJfE_GhDaG`F_EhEsHnJ}CnEyE|HeDdGoIjQoC|GcDpJ}DpNyAhGCL_@fBuBlLcB|LqBvS_AfMeA~Ra@vJu@tWk@fKw@zIkBhN}AfIgDpM{C|IsDrIoDvGoJnNiFjGcAfAyC|CaGxE_IpF}@h@cE|Bm@ZuCrAgAd@gAl@kFlCmDdCMJk@h@eCnCgBbCsBhDSb@Ud@y@dBmBtEsA~DqDnN_B~I_@tCcAjLSjEMjFDdMTvFbAnMlGpb@tBfV`@|INfHh@hd@HfD@p@BfAj@vNBj@BXrAxRnBtRbBjNRzAJp@Jr@hBbMjArG|E|U|DtQrBfMzApKjBvPfAfTNbKA|BAbAIlEIdDKlDeAvNkEn_@sA|ImBhKkG~UsFjTuDnMaFxPg@fBoJd\\iCjIkJxW{HxRgD~IkC~H}F~To@vCcBrIyAzIaB|M]fDW|BaAfLa@rGe@pJQtGu@dMoAtMeBvKeDzNiBxFeDxIWl@k@jAOZ{BlEq@jAmExGkDdEgChCkFfEoCdBuGzCeBj@_FrAeEz@gFv@cE`@_I^eDBkQQeFP_En@_@J{Ab@mDvA{Ar@sBxAyEhEwMjOwG`HgEtDuKhJwDhDmF`FsHvHsJfKmNxO_H~G{CdCkE`DmEnCqB`AgD~AaLdEyHlCsB|@eChAaCrAwGnEaBrAiDvC{EfFsDtEyCjEmF~Ik@jAwBjEwHvPsOj]uFvK}AfCiEhGyCnD{FrFgBxA_D|BaBfAeKbGqHrDw@^}At@kEjBa@RULkFtB{@^}GdCo@Vk@RoC~@wAb@uC|@aDbAs@PwDx@kFr@iGLcDAoGa@wJ_BqIuAsFi@eEQyJDiJn@uMtBuG|@aET}D?uEOiFw@aBc@eAWoBo@qEoBaEaCgBoAcFsEeAkAUUm@q@oAuA}DuFg@u@a@m@W_@s@eA}@oAaBuB[]yAyA{BeBiE_Ck@UQI_@Om@SmC}@wDuAcAc@cE_CiBuAqBeBqBuBuDcFYe@S[g@u@yGiK}FyGeCwBuCoBmFiCkJuC{F}AkF{AyDuAqE{BcDsB}AkAaBuAgGyGaByBeMcR{EgGyEeFsHqG{F{DiCyAoCqAaG_CaHcBmCg@eFm@yJkA_@Iu@MmAUeAWkEuAiB{@sCmAcB_AKGyDiC{CcCuEyE}GoHwF{Ew@k@oEqC}BuA}As@{CiAcEgAoEs@QCcAOuG]y@@q@@iDHmGj@{E|@eDz@oC|@aCdA]P]P]RaAh@eHzEcHrG{GvFyDfCeCjAkDnAaE~@iANiDZcDD}DQiEg@{Ae@sAYQEgDoAqAo@YMiI}DkH{Bg@KoEw@kJo@uCMmIMoOJcHXaCNyJz@_IdAgKjByJ`C}ErAc@LyNfFmCjAeCvAiDhC}AbBsBlCiEhHkAhCoAbDsBjHgArF_F`^iApFyC`LgBpFoC|GuAvCiDhGiAdB{EjGcEvDuDxCqA~@{EzC{IbFg@Vg@XaCpAyHnDsElBm@TgCdAkN|EmHtBkFrA{H~AsB\\",
+            "eta": 1674643258,
+            "duration": {
+                "value": 2808,
+                "text": "46 minutes 48 seconds"
+            },
+            "distance": {
+                "value": 54264,
+                "text": "54.26 km"
+            },
+            "traffic": [
+                {
+                    "offset": 17878,
+                    "length": 11203,
+                    "event": 115,
+                    "delay": 482,
+                    "jam_factor": 1,
+                    "road_class": 0,
+                    "geometry": "wwcxHxclAZvCfAfTNbKA|BAbAIlEIdDKlDeAvNkEn_@sA|ImBhKkG~UsFjTuDnMaFxPg@fBoJd\\iCjIkJxW{HxRgD~IkC~H}F~To@vCcBrIyAzIaB|M]fDW|BaAfLa@rGe@pJQtGu@dMoAtMeBvKeDzNiBxFeDxIWl@k@jAOZ{BlEq@jAmExGkDdEgChCkFfEoCdBuGzCeBj@_FrAeEz@gFv@cE`@_I^eDBkQQeFP_En@_@J{Ab@mDvA{Ar@sBxAyEhEwMjOwG`HgEtDuKhJwDhDmF`FsHvHsJfKmNxOsGpG"
+                },
+                {
+                    "offset": 30488,
+                    "length": 108,
+                    "event": 500,
+                    "delay": -1,
+                    "jam_factor": -1,
+                    "road_class": 0,
+                    "geometry": "y|qxHx}bBiDvC"
+                },
+                {
+                    "offset": 40007,
+                    "length": 6713,
+                    "event": 115,
+                    "delay": 400,
+                    "jam_factor": 1,
+                    "road_class": 0,
+                    "geometry": "kw`yHxqdB{F}AkF{AyDuAqE{BcDsB}AkAaBuAgGyGaByBeMcR{EgGyEeFsHqG{F{DiCyAoCqAaG_CaHcBmCg@eFm@yJkA_@Iu@MmAUeAWkEuAiB{@sCmAcB_AKGyDiC{CcCuEyE}GoHwF{Ew@k@oEqC}BuA}As@{CiAcEgAoEs@QCcAOuG]y@@q@@iDHmGj@{E|@eDz@oC|@aCdA]P]P]RaAh@eHzEcHrG{GvFyDfCeCjAkDnAaE~@iANiDZQA"
+                }
+            ]
+        }
+    ],
+    "status": "OK",
+    "copyright": "© 2023 Sygic a.s."
+}
