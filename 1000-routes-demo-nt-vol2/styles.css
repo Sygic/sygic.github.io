@@ -1,0 +1,23 @@
+html,
+body,
+#map {
+    height: 100%;
+    width: 100%;
+    padding: 0px;
+    margin: 0px;
+}
+
+#immediate-logs {
+    height: 24px;
+    float: left;
+}
+
+.immediate-logs-container {
+    position: fixed;
+    top: 21px;
+    padding: 5px;
+    left: 480px;
+    background-color: rgba(211, 211, 211, 0.7);
+    z-index: 1001;
+    overflow: hidden;
+}
