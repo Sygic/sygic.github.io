@@ -101,7 +101,7 @@ Three entity types. Only Places are required. See the [Integrator API spec](http
 | Entity | What it is | Notes |
 |--------|-----------|-------|
 | **Places** | POI with location, category, display names, search tokens | Can be extended with EV charger data, vehicle restrictions, opening hours, payment methods, service provider links |
-| **Categories** | Controls how places appear on the map (icon, color, grouping) | Each place references one category. One level of hierarchy via `parent_id` |
+| **Categories** | Grouping identifier referenced by each place | Used for filtering and search. Visual appearance (icon, color) is determined by skin configuration in the SDK. One level of hierarchy via `parent_id` |
 | **Service Providers** | Entities operating at places (typically EV charging operators) | Managed separately, linked to places by ID to avoid duplicating metadata |
 
 ---
@@ -119,12 +119,12 @@ Example:
 ```json
 {
   "display_name": [{
-    "title": "Slovnaft",
-    "subtitle": "Bratska, Petrzalka 85104",
-    "lng": "sk",
+    "title": "Shell Highway",
+    "subtitle": "123 Oak Street, Springfield 62704",
+    "lng": "en",
     "search_tokens": [{
-      "index": "Slovnaft cerpacia stanica benzin",
-      "refinement": "Bratislava Petrzalka zachod"
+      "index": "Shell gas station fuel",
+      "refinement": "Springfield downtown west"
     }]
   }]
 }
@@ -132,11 +132,11 @@ Example:
 
 | Query | Result | Why |
 |-------|--------|-----|
-| `"Slovnaft"` | Found | Matches index token |
-| `"Petrzalka"` | Not found | Refinement alone won't match |
-| `"Slovnaft Petrzalka"` | Found + refined | Index matches, refinement narrows |
+| `"Shell"` | Found | Matches index token |
+| `"Springfield"` | Not found | Refinement alone won't match |
+| `"Shell Springfield"` | Found + refined | Index matches, refinement narrows |
 
-This prevents a city name like "Bratislava" from matching every POI in the city.
+This prevents a city name like "Springfield" from matching every POI in the city.
 
 Provide `display_name` entries per language (`lng` uses RFC 5646 tags) for multilingual search.
 
